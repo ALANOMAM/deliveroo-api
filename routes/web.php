@@ -49,8 +49,6 @@ Route::middleware(['auth', 'verified'])
         Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
         Route::post('/register', [RegisteredUserController::class, 'store']);
 
-        //visualizzazione del ristorante dopo il login
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/restaurants', RestaurantController::class);
 
         //DishController route

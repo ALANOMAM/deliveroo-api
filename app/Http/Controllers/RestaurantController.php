@@ -32,6 +32,7 @@ class RestaurantController extends Controller
     {
         $restaurant = new Restaurant;
 
+        //assegnazione dello user_id al nuovo ristorante
         $restaurant->user_id = Auth::id();
 
         $restaurant->save();

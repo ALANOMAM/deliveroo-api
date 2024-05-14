@@ -19,6 +19,8 @@ class StoreDishRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
+    //regole di validazione
     public function rules(): array
     {
         return [

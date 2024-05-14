@@ -15,6 +15,8 @@ class DishController extends Controller
      */
     public function index()
     {
+        //prende tutti i piatti che si trovano nel restaurant_id, mentre Auth::id() restituisce l'id dell'utente autenticato e
+        //poi restituisce tutti i piatti legati a quell'id
         $dishes = Dish::where('restaurant_id', Auth::id())->get();
 
         return view('admin.dishes.index', compact('dishes'));
@@ -33,9 +35,12 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
+        //convalida i dati nello StoreDishRequest
         $request->validated();
 
         $newDish = new Dish();
+
+        //immagine
 
         // if ($request->hasFile('dish_image')) {
         //     $path = Storage::disk('public')->put('dish_images', $request->dish_image);
@@ -44,10 +49,13 @@ class DishController extends Controller
 
         $newDish->fill($request->all());
 
+        //assegnazione dell'id del ristorante associato all'utente
         $newDish->restaurant_id = Auth::id();
 
         $newDish->save();
 
+        //questa parte ancora non funziona------------------------------------------------------------------------------------------------
+        
         return redirect()->route('admin.dishes.index')->with('success', 'Piatto creato con successo.');
     }
 
