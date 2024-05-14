@@ -38,6 +38,11 @@
                                 @enderror
                             </div>
                         </div>
+                   <!--pezzo aggiunto start-->
+
+
+                    <!--pezzo aggiunto end-->
+
 
                         <div class="mb-4 row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
