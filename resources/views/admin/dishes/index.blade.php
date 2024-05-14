@@ -7,7 +7,7 @@
 
     <ul class="list-group">
         @foreach ($dishes as $dish)
-        <li class="list-group-item">{{ $dish->name }} >select</li>
+        <li class="list-group-item">{{ $dish->dish_name }} >select</li>
         @endforeach
     </ul>
 
