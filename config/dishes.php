@@ -2,7 +2,7 @@
 
 return [
     [
-        'restaurant_id' => 1,
+        'restaurant_id' => 3,
         'dish_name' => 'Pizza Margherita',
         'ingredients' => 'Farina, mozzarella',
         'dish_price' => 10,
@@ -10,7 +10,7 @@ return [
         'dish_image' => 'hasdhioadsok',
     ],
     [
-        'restaurant_id' => 1,
+        'restaurant_id' => 3,
         'dish_name' => 'Pizza Pepperoni',
         'ingredients' => 'Farina, mozzarella, pepperoni',
         'dish_price' => 12,

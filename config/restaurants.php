@@ -2,16 +2,6 @@
 
 return  [
     [
-        'id' => 0,
-        'user_id' => 0,
-        'restaurant_name' => 'Osteria Lo Bianco',
-        'vat' => 'IT150908010',
-        'address' => 'Via Enrico Boito, 18, Milano',
-        'image' => 'https://media-cdn.tripadvisor.com/media/photo-s/02/d2/00/42/osteria-lo-bianco.jpg',
-        'phone' => '343-7896756',
-        'description' => 'La migliore osteria di specialità siciliane a Milano. Provare per credere!',
-    ],
-    [
         'id' => 1,
         'user_id' => 1,
         'restaurant_name' => 'Pizzeria La Salsiera',

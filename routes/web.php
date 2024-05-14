@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,8 +46,18 @@ Route::middleware(['auth', 'verified'])
 
         Route::get('/users', [DashboardController::class, 'users'])->name('users');
 
+        //creazione e salvataggio dei dati sia dell'utente che del ristorante
+        Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+        Route::post('/register', [RegisteredUserController::class, 'store']);
+
+        //visualizzazione del ristorante dopo il login
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('/restaurants', RestaurantController::class);
+
         //DishController route
-        Route::resource('dishes', DishController::class);
+        Route::resource('/dishes', DishController::class);
+
+
 
 
         //Route::resource('posts',PostController::class);

@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'restaurant_name' => ['required', 'string', 'max:255'],
             'vat' => ['required', 'numeric'],
@@ -43,6 +43,7 @@ class RegisteredUserController extends Controller
             'description' => ['string'],
         ]);
 
+        // Creazione dell'utente
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -61,10 +62,13 @@ class RegisteredUserController extends Controller
         // Salvataggio del ristorante associato all'utente
         $user->restaurant()->save($restaurant);
 
+        // Invio dell'evento di registrazione
         event(new Registered($user));
 
+        // Login dell'utente
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // Reindirizzamento alla dashboard degli amministratori
+        return redirect()->route('admin.restaurants.dashboard');
     }
 }
