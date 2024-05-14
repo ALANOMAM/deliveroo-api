@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Restaurant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -34,6 +35,12 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'restaurant_name' => ['required', 'string', 'max:255'],
+            'vat' => ['required', 'numeric'],
+            'address' => ['required', 'string', 'max:255'],
+            'image' => ['image', 'max:2048'],
+            'phone' => ['string', 'max:255'],
+            'description' => ['string'],
         ]);
 
         $user = User::create([
@@ -41,6 +48,18 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        // Creazione del ristorante associato all'utente
+        $restaurant = new Restaurant([
+            'restaurant_name' => $request->restaurant_name,
+            'vat' => $request->vat,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'description' => $request->description,
+        ]);
+
+        // Salvataggio del ristorante associato all'utente
+        $user->restaurant()->save($restaurant);
 
         event(new Registered($user));
 
