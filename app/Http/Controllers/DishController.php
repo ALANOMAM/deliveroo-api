@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateDishRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
 
 class DishController extends Controller
 {
@@ -50,7 +48,7 @@ class DishController extends Controller
 
         $newDish->save();
 
-        return redirect()->route('admin.dishes.index');
+        return redirect()->route('admin.dishes.index')->with('success', 'Piatto creato con successo.');
     }
 
     /**

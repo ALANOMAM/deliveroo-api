@@ -43,7 +43,6 @@ Route::middleware(['auth', 'verified'])
 
         Route::get('/', [DashboardController::class, 'index'])->name('admin');
 
-
         Route::get('/users', [DashboardController::class, 'users'])->name('users');
 
         //creazione e salvataggio dei dati sia dell'utente che del ristorante
@@ -56,6 +55,7 @@ Route::middleware(['auth', 'verified'])
 
         //DishController route
         Route::resource('/dishes', DishController::class);
+
 
 
 
