@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -13,7 +15,11 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        // $dishes = Dish::all();
+
+        $dishes = Dish::where('restaurant_id', Auth::id())->get();
+
+        return view('admin.dishes.index', compact('dishes'));
     }
 
     /**
@@ -21,7 +27,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dishes.create');
     }
 
     /**
@@ -29,7 +35,20 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+        $newDish = new Dish();
+
+        // if ($request->hasFile('dish_image')) {
+        //     $path = Storage::disk('public')->put('dish_images', $request->dish_image);
+        //     $newDish->dish_image = $path;
+        // };
+
+        $newDish->fill($request->all());
+
+        $newDish->restaurant_id = Auth::id();
+
+        $newDish->save();
+
+        return redirect()->route('admin.dishes.index', $newDish);
     }
 
     /**
@@ -45,7 +64,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
@@ -53,7 +72,11 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        $dish->update($request->all());
+
+        $dish->save();
+
+        return redirect()->route('admin.dishes.index', $dish);
     }
 
     /**
@@ -61,6 +84,8 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete();
+
+        return redirect()->route('admin.dishes.index');
     }
 }
