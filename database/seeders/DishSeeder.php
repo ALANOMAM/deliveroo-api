@@ -13,21 +13,19 @@ class DishSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        $newDish = new Dish();
 
-        $newDish->restaurant_id = 1;
-        $newDish->dish_name = "Margherita";
-        $newDish->dish_price = 20.50;
-        $newDish->visible = true;
-        $newDish->dish_image = " ";
-        $newDish->ingredients = implode(' , ', ["salt","mozzarella","tomato"]);
-        //questo ci serve per salvare i campi e applicare e modifiche
-        $newDish->save();
+        $dishes = config("dishes");
 
+        foreach ($dishes as $dish) {
 
-
-
-
+            $newDish = new Dish;
+            $newDish->restaurant_id = $dish['restaurant_id'];
+            $newDish->dish_name = $dish['dish_name'];
+            $newDish->ingridients = $dish['ingridients'];
+            $newDish->dish_price = $dish['dish_price'];
+            $newDish->visibiity = $dish['visibiity'];
+            $newDish->dish_image = $dish['dish_image'];
+            $newDish->save();
+        }
     }
 }
