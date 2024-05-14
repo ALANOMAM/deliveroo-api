@@ -26,6 +26,9 @@ class CategorySeeder extends Seeder
             'Sushi',
             'Kebab',
             'Gourmet',
+            'Osteria',
+            'Trattoria',
+            'Panineria',
         ];
 
         foreach($categories as $category) {
