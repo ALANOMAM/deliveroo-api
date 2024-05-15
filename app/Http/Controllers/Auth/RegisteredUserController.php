@@ -35,12 +35,46 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'restaurant_name' => ['required', 'string', 'max:255'],
-            'vat' => ['required', 'numeric'],
-            'address' => ['required', 'string', 'max:255'],
-            'image' => ['image', 'max:2048'],
-            'phone' => ['string', 'max:255'],
-            'description' => ['string'],
+
+            'restaurant_name' => 'required|string|max:255',
+            'vat' => 'required|string|min:11',
+            'address' => 'required|string|max:255',
+            'image' => 'nullable|file',
+            'phone' => 'nullable|min:10|max:255',
+        ], [
+
+            // messaggi in italiano per nome
+            'name.required' => 'Il campo nome è obbligatorio',
+            'name.max' => 'Il campo nome può avere massimo :max caretteri',
+
+            // messaggi in italiano per campo email
+            'email.required' => 'Il campo mail è obbligatoria',
+            'email.email' => 'Inserisci un indirizzo mail valido',
+            'email.unique' => 'Questo indirizzo mail è già stato utilizzato',
+
+            // messaggi in italiano per campo password
+            'password.required' => 'Il campo della password è obbligatoria',
+            'password.confirmed' => 'Conferma la password',
+
+            // messaggi in italiano per restaurant_name
+            'restaurant_name.required' => "Il campo del nome dell'attività è obbligatorio",
+            'restaurant_name.max' => 'Questo campo può avere massimo :max caratteri',
+
+            // messaggi in italiano per vat
+            'vat.required' => "Il campo della p.iva è obbligatorio",
+            'vat.min' => "Il campo della p.iva deve avere minimo :min numeri",
+            'vat.max' => "Il campo della p.iva può avere massimo :max numeri",
+
+
+            // messaggi in italiano per address
+            'address.required' => "Il campo dell'indirizzo è obbligatorio",
+            'address.max' => "Il campo dell'indirizzo può avere massimo :max caratteri",
+
+            // messaggi in italiano per phone
+            'phone.min' => "Il campo del telefono deve avere minimo :min numeri",
+            'phone.max' => "Il campo del telefono può avere massimo :max numeri",
+
+
         ]);
 
         // Creazione dell'utente
