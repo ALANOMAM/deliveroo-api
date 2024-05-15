@@ -14,8 +14,10 @@
                     <div class="image rounded-4">
                         @if ($dish->dish_image)
                         <img src="{{ asset('storage/' . $dish->dish_image )}}" alt="{{ $dish->dish_name }}">
-                        @else
+                        @elseif (!$dish->dish_image)
                         <img src="{{ asset('https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19739.jpg') }}" alt="Placeholder">
+                        @else
+                        <img src="{{$dish->dish_image}}" alt="">
                         @endif
                     </div>
                     <div>
@@ -26,7 +28,7 @@
                             {{$dish->dish_price}} €
                         </h5>
                         <div class="ingredients">
-                            {{$dish->ingredients}}
+                            <span class="fw-bold">Ingredienti:</span> {{$dish->ingredients}}
                         </div>
                     </div>
                 </div>

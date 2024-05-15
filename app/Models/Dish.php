@@ -17,6 +17,10 @@ class Dish extends Model
         'ingredients',
     ];
 
+    protected $attributes = [
+        'visible' => true,
+    ];
+
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);

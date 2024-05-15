@@ -1,10 +1,44 @@
 @use '../partials/variables' as *;
 
+.nav-logo {
+    width: 280px;
+}
+
+img {
+    width: 100%;
+}
+
 .menu {
     color: $textColor;
 }
 
 .menu:hover {
-    color: red;
+    color: rgba(246, 89, 0, 1);
     cursor: pointer;
+}
+
+.offcanvas-body {
+    color: rgba(0, 176, 116, 1);
+
+}
+
+.active {
+    background-color: rgba(0, 176, 116, 0.15);
+    border-radius: 10px;
+    padding: 16px 0;
+    position: relative;
+    font-weight: 800;
+}
+
+.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: -40px;
+    height: 100%;
+    width: 5px;
+    background-color: rgba(0, 176, 116, 1);
+
+
 }

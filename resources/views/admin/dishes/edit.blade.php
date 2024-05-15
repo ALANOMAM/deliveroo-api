@@ -30,7 +30,7 @@
         </div>
 
         <div class="mb-4 row d-flex flex-column">
-        <label for="dish_image">Inserisci un'immagine</label>
+            <label for="dish_image">Inserisci un'immagine</label>
             <div class="col-md-6">
                 <input id="dish_image" type="file" class="form-control @error('dish_image') is-invalid @enderror" name="dish_image">
                 @error('dish_image')
@@ -47,7 +47,7 @@
         </div>
 
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="visible" name="visible" {{ old('visible', $dish->visible) ? 'checked' : '' }}>
+            <input type="checkbox" class="form-check-input" value="0" id="visible" name="visible" {{ old('visible', $dish->visible) ? 'checked' : '' }}>
             <label class="form-check-label" for="visible">Visibile</label>
         </div>
 

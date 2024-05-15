@@ -1,0 +1,5 @@
+@use '../partials/variables' as *;
+
+h1 {
+    color: $secondaryColor;
+}

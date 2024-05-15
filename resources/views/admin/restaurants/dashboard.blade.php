@@ -8,39 +8,50 @@
 
         <div class="col-md-8">
 
-            <div class="card">
+            <div class="bg-light mb-3 rounded-4 shadow p-3 my-5 px-5">
 
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    <p>Bentornato/a, {{ Auth::user()->name }}!</p>
+                <div>
+                    <p class="fs-3 text-center">Bentornato/a, {{ Auth::user()->name }}!</p>
 
 
-                    <h3>{{ $restaurant->restaurant_name }} è su JustBool!</h3>
+                    <h1 class="text-center">{{ $restaurant->restaurant_name }} è su JustBool!</h1>
 
-                    <div class="d-flex ">
-                        @if ($restaurant->image)
-                        <img src="{{ asset('storage/' . $restaurant->image) }}" alt="{{ $restaurant->restaurant_name }}" width="100">
-                        @endif
-                        <div class="ps-3">
-                            <div>
-                                <strong>Nome Attività:</strong>{{ $restaurant->restaurant_name }}
+                    <div class="d-flex flex-column">
+                        <div>
+                            @if ($restaurant->image)
+                            @if (Str::startsWith($restaurant->image, ['http://', 'https://']))
+                            <img src="{{ $restaurant->image }}" alt="{{ $restaurant->restaurant_name }}" width="100">
+                            @else
+                            <img src="{{ asset('storage/' . $restaurant->image) }}" alt="{{ $restaurant->restaurant_name }}" width="100">
+                            @endif
+                            @endif
+                        </div>
+
+                        <h2 class="text-center mt-3">Informazioni sul ristorante</h2>
+                        <div class="ps-3 my-5 d-flex jusify-content-between gap-5">
+
+                            <div class="fs-5 d-flex flex-column">
+                                <div>
+                                    <strong>Nome Attività: </strong> {{ $restaurant->restaurant_name }}
+                                </div>
+                                <div>
+                                    <strong>Indirizzo:</strong> {{ $restaurant->address }}
+                                </div>
+                                <div>
+                                    <strong>Telefono:</strong> {{ $restaurant->phone }}
+                                </div>
+                                <div>
+                                    @if ($restaurant->description)
+                                    <strong>Descrizione:</strong> {{ $restaurant->description }}
+                                    @endif
+                                </div>
                             </div>
-                            <div>
+
+
+                            <div class="fs-5">
                                 <strong>Partita IVA:</strong> {{ $restaurant->vat }}
                             </div>
-                            <div>
-                                <strong>Indirizzo:</strong> {{ $restaurant->address }}
-                            </div>
-                            <div>
-                                <strong>Telefono:</strong> {{ $restaurant->phone }}
-                            </div>
 
-                            @if ($restaurant->description)
-                            <div>
-                                <strong>Descrizione:</strong> {{ $restaurant->description }}
-                            </div>
-                            @endif
 
                         </div>
 
