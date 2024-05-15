@@ -24,72 +24,76 @@
 <body>
     <div id="app">
 
-<!--navbar start-->
-<div class="  shadow p-2  bg-body-tertiary rounded">
-    <!--container start-->
- <div class="container d-flex justify-content-between">  
+        <!--navbar start-->
+        <div class="  shadow p-2  bg-body-tertiary rounded">
+            <!--container start-->
+            <div class="container d-flex justify-content-between align-items-center">
 
-<!--sidenav start-->
+                <!--sidenav start-->
+                <div class="d-flex gap-4 align-items-center">
+                    <a class="text-decoration-none " href="{{url('admin') }}"><img src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:160px;" alt="logo"></a>
+                    <div data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" class=" mt-1 menu">
+                        Menù
+                    </div>
+                </div>
 
-<img class="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:150px;" alt="logo">
-
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-  <div class="offcanvas-header">
-    <a class="offcanvas-title" id="offcanvasWithBothOptionsLabel" href="{{url('/') }}"><img src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:150px;" alt="logo"></a>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body d-flex flex-column gap-2 ">
-    <a class="nav-link" href="{{url('admin') }}">{{ __('Home') }}</a>
-    <a href="{{route('admin.dishes.index')}}" class="nav-link">Lista Dei Piatti</a>
-  </div>
-</div>
-<!--sidenav end--->
+                <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                    <div class="offcanvas-header">
+                        <a class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img class="nav-logo" src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:150px;" alt="logo"></a>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-flex flex-column gap-2 ">
+                        <a class="nav-link" href="{{url('admin') }}">{{ __('Home') }}</a>
+                        <a href="{{route('admin.dishes.index')}}" class="nav-link">Lista Dei Piatti</a>
+                    </div>
+                </div>
+                <!--sidenav end--->
 
 
 
-<!--my dropdowm start-->
-<div class="dropdown">
-    <ul class="navbar-nav ml-auto">
-        <!-- Authentication Links -->
-        @guest
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-        </li>
-        @if (Route::has('register'))
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-        </li>
-        @endif
-        @else
-        <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }}
-            </a>
+                <!--my dropdowm start-->
+                <div class="dropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ url('admin') }}">{{__('Dashboard')}}</a>
-                <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('admin') }}">{{__('Dashboard')}}</a>
+                                <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+                                    {{ __('Logout') }}
+                                </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endguest
+                    </ul>
+
+                </div>
+                <!--my dropdown end-->
+
             </div>
-        </li>
-        @endguest
-    </ul>
+            <!--container end-->
 
-  </div>
-<!--my dropdown end-->
-
-</div>
-<!--container end-->
-
-</div>
-<!--navbar end-->
+        </div>
+        <!--navbar end-->
 
 
 
