@@ -41,7 +41,7 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin') // tutti i loro url inizino con "admin/"
     ->group(function () {
 
-        Route::get('/', [DashboardController::class, 'index'])->name('admin');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/users', [DashboardController::class, 'users'])->name('users');
 

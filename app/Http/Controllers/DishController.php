@@ -55,7 +55,7 @@ class DishController extends Controller
         $newDish->save();
 
         //questa parte ancora non funziona------------------------------------------------------------------------------------------------
-        
+
         return redirect()->route('admin.dishes.index')->with('success', 'Piatto creato con successo.');
     }
 

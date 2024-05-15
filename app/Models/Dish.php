@@ -14,7 +14,6 @@ class Dish extends Model
         'restaurant_id',
         'visible',
         'dish_price',
-        'dish_image',
         'ingredients',
     ];
 
