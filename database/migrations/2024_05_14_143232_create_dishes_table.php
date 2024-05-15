@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('dish_name', 50);
             $table->decimal('dish_price', 5, 2);
-            $table->boolean('visible');
+            $table->boolean('visible')->default(1);
             $table->text('dish_image')->nullable();
             $table->text('ingredients')->nullable();
             $table->timestamps();

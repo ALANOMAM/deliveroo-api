@@ -24,8 +24,8 @@
         </div>
 
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
-            <label class="form-check-label" for="visible">Visibile</label>
+            <input type="checkbox" class="form-check-input" value="0" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
+            <label class="form-check-label" for="visible">Rendere Invisibile il tuo piatto</label>
         </div>
 
         <button type="submit" class="btn btn-primary">Crea</button>
