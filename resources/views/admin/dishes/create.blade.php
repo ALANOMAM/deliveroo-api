@@ -10,17 +10,32 @@
 
         <div class="form-group">
             <label for="dish_name">Nome del piatto</label>
-            <input type="text" class="form-control" id="dish_name" name="dish_name" value="{{ old('dish_name') }}">
+            <input type="text" class="form-control @error('dish_name') is-invalid @enderror" id="dish_name" name="dish_name" value="{{ old('dish_name') }}">
+            @error('dish_name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="dish_price">Inserisci il prezzo</label>
-            <input type="text" class="form-control" id="dish_price" name="dish_price" value="{{ old('dish_price') }}">
+            <input type="text" class="form-control @error('dish_price') is-invalid @enderror" id="dish_price" name="dish_price" value="{{ old('dish_price') }}">
+            @error('dish_price')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="ingredients" class="form-label">Ingredienti</label>
-            <textarea class="form-control" id="ingredients" rows="3" name="ingredients">{{ old('ingredients') }}</textarea>
+            <textarea class="form-control" id="form-control @error('dish_name') is-invalid @enderror" rows="3" name="ingredients">{{ old('ingredients') }}</textarea>
+            @error('ingredients')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
         <div class="form-check">
