@@ -22,7 +22,25 @@ class UpdateDishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'dish_name' => 'required|string|max:50',
+            'dish_price' => 'required|numeric|min:0',
+            'ingredients' => 'nullable',
+            'visible' => 'nullable|boolean',
+            'dish_image' => 'nullable|image'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+
+            'dish_name.required' => 'Il nome del piatto è obbligatorio',
+            'dish_name.max' => 'Il nome del piatto può avere massimo :max caratteri',
+
+            'dish_price.required' => 'Il prezzo del piatto è obbligatorio inserirlo',
+            'dish_price.min' => 'Il prezzo non può essere negativo',
+
+
         ];
     }
 }
