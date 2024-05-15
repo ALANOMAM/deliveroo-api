@@ -42,10 +42,10 @@ class DishController extends Controller
 
         //immagine
 
-        // if ($request->hasFile('dish_image')) {
-        //     $path = Storage::disk('public')->put('dish_images', $request->dish_image);
-        //     $newDish->dish_image = $path;
-        // };
+        if ($request->hasFile('dish_image')) {
+            $path = Storage::disk('public')->put('dish_images', $request->dish_image);
+            $newDish->dish_image = $path;
+        };
 
         $newDish->fill($request->all());
 

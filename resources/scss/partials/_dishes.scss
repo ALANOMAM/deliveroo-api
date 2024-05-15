@@ -1,0 +1,47 @@
+body {
+    background-color: rgba(243, 242, 247, 1);
+}
+
+.shadow {
+    box-shadow: 0 1px 1px rgba(61, 61, 61, 0.659);
+}
+
+.ingredients {
+    width: 500px;
+    word-wrap: break-word;
+}
+
+.button {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: rgba(0, 176, 116, 0.15);
+}
+
+.delete {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: rgba(176, 0, 0, 0.15);
+}
+
+i {
+    color: rgba(0, 176, 116, 1);
+}
+
+.fa-trash {
+    color: red;
+}
+
+.image {
+    width: 140px;
+    height: 140px;
+    background-color: red;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

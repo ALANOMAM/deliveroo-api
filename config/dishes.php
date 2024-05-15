@@ -15,6 +15,6 @@ return [
                 'ingredients' => 'Farina, mozzarella, basilico',
                 'dish_price' => 12.00,
                 'visible' => true,
-                'dish_image' => 'hasdhioadsok',
+                'dish_image' => 'https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19739.jpg',
         ],
 ];
