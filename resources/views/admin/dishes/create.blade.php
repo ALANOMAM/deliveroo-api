@@ -29,7 +29,7 @@
         </div>
 
         <div class="mb-4 d-flex flex-column">
-            <label for="dish_price">Inserisci un'immagine</label>
+            <label for="dish_image">Inserisci un'immagine</label>
             <div class="col-md-6">
                 <input id="dish_image" type="file" class="form-control @error('dish_image') is-invalid @enderror" name="dish_image">
                 @error('dish_image')
