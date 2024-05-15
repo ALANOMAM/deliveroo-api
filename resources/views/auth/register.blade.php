@@ -11,9 +11,10 @@
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
-                        <!-- Campi per l'utente -->
+                        
+
                         <div class="mb-4 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Proprietario') }}</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 @error('name')
@@ -23,6 +24,15 @@
                                 @enderror
                             </div>
                         </div>
+
+
+                        <div class="mb-4 row">
+                            <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Attività') }}</label>
+                            <div class="col-md-6">
+                                <input id="restaurant_name" type="text" class="form-control" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
+                            </div>
+                        </div>
+
 
                         <div class="mb-4 row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }}</label>
@@ -36,13 +46,6 @@
                             </div>
                         </div>
 
-                        <!-- Campi per il ristorante -->
-                        <div class="mb-4 row">
-                            <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Attività') }}</label>
-                            <div class="col-md-6">
-                                <input id="restaurant_name" type="text" class="form-control" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
-                            </div>
-                        </div>
 
                         <div class="mb-4 row">
                             <label for="vat" class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}</label>
