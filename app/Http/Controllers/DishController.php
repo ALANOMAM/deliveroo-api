@@ -42,10 +42,10 @@ class DishController extends Controller
 
         //immagine
 
-        // if ($request->hasFile('dish_image')) {
-        //     $path = Storage::disk('public')->put('dish_images', $request->dish_image);
-        //     $newDish->dish_image = $path;
-        // };
+        if ($request->hasFile('dish_image')) {
+            $path = Storage::disk('public')->put('dish_images', $request->dish_image);
+            $newDish->dish_image = $path;
+        };
 
         $newDish->fill($request->all());
 
@@ -55,7 +55,7 @@ class DishController extends Controller
         $newDish->save();
 
         //questa parte ancora non funziona------------------------------------------------------------------------------------------------
-        
+
         return redirect()->route('admin.dishes.index')->with('success', 'Piatto creato con successo.');
     }
 
