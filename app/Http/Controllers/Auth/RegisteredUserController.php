@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -39,7 +40,7 @@ class RegisteredUserController extends Controller
             'restaurant_name' => 'required|string|max:255',
             'vat' => 'required|string|min:11',
             'address' => 'required|string|max:255',
-            'image' => 'nullable|file',
+            'image' => 'file|max:3000|nullable|mimes:jpg,bmp,png',
             'phone' => 'nullable|min:10|max:255',
         ], [
 
@@ -77,6 +78,8 @@ class RegisteredUserController extends Controller
 
         ]);
 
+
+
         // Creazione dell'utente
         $user = User::create([
             'name' => $request->name,
@@ -92,6 +95,11 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'description' => $request->description,
         ]);
+
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put('images', $request->image);
+            $restaurant->image = $path;
+        };
 
         // Salvataggio del ristorante associato all'utente
         $user->restaurant()->save($restaurant);

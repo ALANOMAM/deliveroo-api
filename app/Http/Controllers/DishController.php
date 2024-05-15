@@ -82,6 +82,11 @@ class DishController extends Controller
     {
         $dish->update($request->all());
 
+        if ($request->hasFile('dish_image')) {
+            $path = Storage::disk('public')->put('dish_images', $request->dish_image);
+            $dish->dish_image = $path;
+        };
+
         $dish->save();
 
         return redirect()->route('admin.dishes.index', $dish);

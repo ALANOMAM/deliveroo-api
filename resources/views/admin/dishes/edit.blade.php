@@ -19,6 +19,18 @@
             <input type="text" class="form-control" id="dish_price" name="dish_price" value="{{ old('dish_price', $dish->dish_price) }}">
         </div>
 
+        <div class="mb-4 row d-flex flex-column">
+            <label for="dish_image" class="col-md-4 col-form-label text-md-right">{{ __('Immagine') }}</label>
+            <div class="col-md-6">
+                <input id="dish_image" type="file" class="form-control @error('dish_image') is-invalid @enderror" name="dish_image">
+                @error('dish_image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+
         <div class="mb-3">
             <label for="ingredients" class="form-label">Ingredienti</label>
             <textarea class="form-control" id="ingredients" rows="3" name="ingredients">{{ old('ingredients', $dish->ingredients) }}</textarea>

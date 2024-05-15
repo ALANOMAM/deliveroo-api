@@ -13,7 +13,7 @@
                 <div class="d-flex align-items-center gap-3 p-3">
                     <div class="image rounded-4">
                         @if ($dish->dish_image)
-                        <img src="{{ $dish->dish_image }}" alt="{{ $dish->dish_name }}">
+                        <img src="{{ asset('storage/' . $dish->dish_image )}}" alt="{{ $dish->dish_name }}">
                         @else
                         <img src="{{ asset('https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19739.jpg') }}" alt="Placeholder">
                         @endif

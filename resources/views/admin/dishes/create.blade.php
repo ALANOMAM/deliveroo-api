@@ -28,6 +28,18 @@
             @enderror
         </div>
 
+        <div class="mb-4 d-flex flex-column">
+            <label for="dish_price">Inserisci un'immagine</label>
+            <div class="col-md-6">
+                <input id="dish_image" type="file" class="form-control @error('dish_image') is-invalid @enderror" name="dish_image">
+                @error('dish_image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+
         <div class="mb-3">
             <label for="ingredients" class="form-label">Ingredienti</label>
             <textarea class="form-control" id="form-control @error('dish_name') is-invalid @enderror" rows="3" name="ingredients">{{ old('ingredients') }}</textarea>

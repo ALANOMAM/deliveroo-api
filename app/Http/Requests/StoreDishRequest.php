@@ -28,7 +28,7 @@ class StoreDishRequest extends FormRequest
             'dish_price' => 'required|numeric|min:0',
             'ingredients' => 'nullable',
             'visible' => 'nullable|boolean',
-            'dish_image' => 'nullable|image'
+            'dish_image' => 'file|max:3000|nullable|mimes:jpg,bmp,png'
         ];
     }
 

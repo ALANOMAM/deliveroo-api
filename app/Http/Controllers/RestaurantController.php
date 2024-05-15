@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -32,6 +33,10 @@ class RestaurantController extends Controller
     {
         $restaurant = new Restaurant;
 
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put('images', $request->image);
+            $restaurant->image = $path;
+        };
         //assegnazione dello user_id al nuovo ristorante
         $restaurant->user_id = Auth::id();
 
