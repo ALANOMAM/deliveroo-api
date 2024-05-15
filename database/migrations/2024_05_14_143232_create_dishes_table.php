@@ -18,7 +18,6 @@ return new class extends Migration
             $table->boolean('visible');
             $table->text('dish_image')->nullable();
             $table->text('ingredients')->nullable();
-            $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
