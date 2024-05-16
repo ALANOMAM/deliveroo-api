@@ -46,9 +46,9 @@
             <textarea class="form-control" id="ingredients" rows="3" name="ingredients">{{ old('ingredients', $dish->ingredients) }}</textarea>
         </div>
 
-        <div class="form-check">
+        <div class="form-check mb-3">
             <input type="checkbox" class="form-check-input" value="0" id="visible" name="visible" {{ old('visible', $dish->visible) ? 'checked' : '' }}>
-            <label class="form-check-label" for="visible">Visibile</label>
+            <label class="form-check-label" for="visible">Nascondi il piatto</label>
         </div>
 
         <button type="submit" class="btn btn-primary">Salva</button>
