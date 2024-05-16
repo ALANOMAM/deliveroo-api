@@ -114,6 +114,10 @@ class RegisteredUserController extends Controller
         // Salvataggio del ristorante associato all'utente
         $user->restaurant()->save($restaurant);
 
+        //Questa riga di codice è responsabile dell'associazione di categorie a un ristorante specifico nella tua applicazione Laravel. 
+        //Recupera le categorie esistenti collegate al ristorante utilizzando il metodo categories() e successivamente utilizza il metodo 
+        //attach per aggiungere ulteriori categorie specificate nei dati della richiesta in arrivo ($request->categories). 
+        //Questo ti consente di gestire dinamicamente le categorie associate a ciascun ristorante.
         $restaurant->categories()->attach($request->categories);
 
         // Invio dell'evento di registrazione

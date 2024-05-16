@@ -38,27 +38,24 @@
                             </div>
                         </div>
 
-               <!--tipologie start-->
+               <!--tipologie nel form di registrazione start-->
                <div class="mb-3 d-flex">
                 {{--@dump($categories)--}}
-                <label class="col-md-4 col-form-label text-md-right" for="">Tipologia Ristorante</label>
-                <div>
-                    @foreach($categories as $category)
-                    <div class="form-check">
-                        <input 
-                        type="checkbox" 
-                        name="categories[]" 
-                        value="{{$category->id}}" 
-                        id="category-{{$category->id}}"
-                        {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
-                        >
-                        <label for="category-{{$category->id}}">{{$category->category_name}}</label>
-                    </div>
-                    @endforeach
+                <label class="mb-2" for="">Tipologia Ristorante</label>
+                @foreach($categories as $category)
+                <div class="form-check">
+                 <input 
+                 type="checkbox" 
+                 name="categories[]" 
+                 value="{{$category->id}}" 
+                 id="{{$category->id}}"
+                 {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
+                 >
+                 <label for="{{$category->id}}">{{$category->category_name}}</label>
                 </div>
-
+                @endforeach
              </div>
-               <!--tipologia end-->
+               <!--tipologia nel form di registrazione end-->
 
                      
                         <div class="mb-4 row">

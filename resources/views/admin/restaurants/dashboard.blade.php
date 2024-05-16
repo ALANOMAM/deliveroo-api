@@ -36,14 +36,16 @@
                                 <div>
                                     <strong>Nome Attività: </strong> {{ $restaurant->restaurant_name }}
                                 </div>
-
+                              
+                                <!--dove visualizzo le tipologie una volta creato il profilo start-->
                                 <div class="list-group-item">
                                     <strong>Tipologia/e:</strong>
                                     {{--@dd($categories)--}}
                                     @foreach ($restaurant->categories as $category)
-                                    <span class="">{{$category->category_name}}</span>
+                                    <span class="badge rounded-pill text-bg-success">{{$category->category_name}}</span>
                                     @endforeach
                                 </div>
+                              <!--dove visualizzo le tipologie una volta creato il profilo end-->
 
                                 <div>
                                     <strong>Indirizzo:</strong> {{ $restaurant->address }}
