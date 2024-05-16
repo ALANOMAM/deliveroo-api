@@ -31,7 +31,7 @@
 
                 <!--sidenav start-->
                 <div class="d-flex gap-4 align-items-center py-3">
-                    <a class="text-decoration-none " href="{{url('admin') }}"><img src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:200px;" alt="logo"></a>
+                    <a class="text-decoration-none" ><img src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:200px;" alt="logo"></a>
                     <div data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" class=" mt-1 menu fs-5">
                         Menu
                     </div>
