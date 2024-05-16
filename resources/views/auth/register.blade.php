@@ -48,10 +48,10 @@
                  type="checkbox" 
                  name="categories[]" 
                  value="{{$category->id}}" 
-                 id="{{$category->id}}"
+                 id="category-{{$category->id}}"
                  {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
                  >
-                 <label for="{{$category->id}}">{{$category->category_name}}</label>
+                 <label for="category-{{$category->id}}">{{$category->category_name}}</label>
                 </div>
                 @endforeach
              </div>

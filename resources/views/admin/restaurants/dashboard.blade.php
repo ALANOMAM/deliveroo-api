@@ -39,7 +39,7 @@
                                     <strong>Tipologia/e:</strong>
                                     {{--@dd($categories)--}}
                                     @foreach ($restaurant->categories as $category)
-                                    <span class="badge rounded-pill">{{$category->category_name}}</span>
+                                    <span class="">{{$category->category_name}}</span>
                                     @endforeach
                                 </div>
 

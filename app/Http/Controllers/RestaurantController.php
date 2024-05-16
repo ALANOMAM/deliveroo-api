@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,8 +16,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
+        //$categories = Category::where('user_id', Auth::id())->get();
         $restaurants = Restaurant::where('user_id', Auth::id())->get();
-        return view('admin.restaurants.dashboard', compact('restaurants'));
+    return view('admin.restaurants.dashboard', compact('restaurants'/*,'categories'*/));
     }
 
     /**
@@ -24,9 +26,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+         $categories = Category::all();
 
-        return view('admin.restaurants.create',compact('categories'));
+        return view('admin.restaurants.create', compact('categories'));
     }
 
     /**
@@ -34,6 +36,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
         $restaurant = new Restaurant;
 
         if ($request->hasFile('image')) {
@@ -44,6 +47,11 @@ class RestaurantController extends Controller
         $restaurant->user_id = Auth::id();
 
         $restaurant->save();
+
+        if(Arr::exists($data,'categories')){
+            $restaurant->categories()->attach($data['categories']);
+        }
+        
     }
 
     /**

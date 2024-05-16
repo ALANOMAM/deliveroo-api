@@ -114,7 +114,7 @@ class RegisteredUserController extends Controller
         // Salvataggio del ristorante associato all'utente
         $user->restaurant()->save($restaurant);
 
-        //$newPostElement->technologies()->attach($request->categories);
+        $restaurant->categories()->attach($request->categories);
 
         // Invio dell'evento di registrazione
         event(new Registered($user));
