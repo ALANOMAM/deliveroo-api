@@ -15,6 +15,6 @@ return [
                 'ingredients' => 'Farina, mozzarella, basilico',
                 'dish_price' => 12.00,
                 'visible' => true,
-                'dish_image' => 'https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19739.jpg',
+                'dish_image' => 'https://media-assets.lacucinaitaliana.it/photos/6436c696f536a5ce0d9ef0ac/16:9/w_2560%2Cc_limit/pizza%2520margherita.jpg',
         ],
 ];

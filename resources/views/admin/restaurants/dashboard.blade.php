@@ -20,10 +20,12 @@
                         <div>
                             @if ($restaurant->image)
                             @if (Str::startsWith($restaurant->image, ['http://', 'https://']))
-                            <img src="{{ $restaurant->image }}" alt="{{ $restaurant->restaurant_name }}"  width="100">
+                            <img src="{{ $restaurant->image }}" alt="{{ $restaurant->restaurant_name }}" width="100">
                             @else
                             <img src="{{ asset('storage/' . $restaurant->image) }}" alt="{{ $restaurant->restaurant_name }}" width="100">
                             @endif
+                            @else
+                            <img src="{{ Vite::asset('resources/img/restaurant_placeholder.jpg') }}" alt="Placeholder" width="100">
                             @endif
                         </div>
 

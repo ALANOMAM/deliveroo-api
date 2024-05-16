@@ -13,11 +13,13 @@
                 <div class="d-flex align-items-center gap-3 p-3">
                     <div class="image rounded-4">
                         @if ($dish->dish_image)
-                        <img src="{{ asset('storage/' . $dish->dish_image )}}" alt="{{ $dish->dish_name }}">
-                        @elseif (!$dish->dish_image)
-                        <img src="{{ asset('https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19739.jpg') }}" alt="Placeholder">
+                        @if (Str::startsWith($dish->dish_image, ['http://', 'https://']))
+                        <img src="{{ $dish->dish_image }}" alt="{{ $dish->dish_name }}" width="100">
                         @else
-                        <img src="{{$dish->dish_image}}" alt="">
+                        <img src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->dish_name }}" width="100">
+                        @endif
+                        @else
+                        <img src="{{ Vite::asset('resources/img/Default_different_food_0.jpg') }}" alt="Placeholder" width="100">
                         @endif
                     </div>
                     <div>
