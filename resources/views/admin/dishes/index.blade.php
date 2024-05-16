@@ -43,9 +43,9 @@
                                 </div>
                                 <div> 
                                     @if ($dish->visible)
-                                        <i class="fa-solid fa-eye"></i>
+                                    <i class="fa-sharp fa-solid fa-eye-slash"></i>
                                     @else
-                                        <i class="fa-sharp fa-solid fa-eye-slash"></i>
+                                        <i class="fa-solid fa-eye"></i>
                                     @endif
                                 </div>
                             </th>
