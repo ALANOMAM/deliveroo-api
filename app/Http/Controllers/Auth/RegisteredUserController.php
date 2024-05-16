@@ -75,6 +75,11 @@ class RegisteredUserController extends Controller
             'phone.min' => "Il campo del telefono deve avere minimo :min numeri",
             'phone.max' => "Il campo del telefono può avere massimo :max numeri",
 
+            // messaggi in italiano per immagine
+            'image.file' => "L'immagine del ristorante deve essere un file",
+            'image.max' => "La dimensione del file non deve superare i 3000 KB",
+            'image.mimes' => "Il file deve essere un'immagine con estensione jpg, bmp o png",
+
 
         ]);
 
