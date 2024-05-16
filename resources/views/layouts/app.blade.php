@@ -79,11 +79,11 @@
                         @guest
                         <div class="d-flex gap-4">
                             <li class="nav-item">
-                                <a class="nav-link fs-5" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link fs-5" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link fs-5" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link fs-5" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                             </li>
                         </div>
                         @endif
