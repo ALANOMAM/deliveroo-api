@@ -35,26 +35,24 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //convalida i dati nello StoreDishRequest
-        $request->validated();
+        $validated = $request->validated();
 
         $newDish = new Dish();
 
-        //immagine
-
+        //image upload
         if ($request->hasFile('dish_image')) {
             $path = Storage::disk('public')->put('dish_images', $request->dish_image);
             $newDish->dish_image = $path;
-        };
+        }
 
-        $newDish->fill($request->all());
+        $newDish->fill($validated);
 
-        //assegnazione dell'id del ristorante associato all'utente
         $newDish->restaurant_id = Auth::id();
 
-        $newDish->save();
+        //'visible' checkbox
+        $newDish->visible = $request->has('visible') ? 1 : 0;
 
-        //questa parte ancora non funziona------------------------------------------------------------------------------------------------
+        $newDish->save();
 
         return redirect()->route('admin.dishes.index')->with('success', 'Piatto creato con successo.');
     }
@@ -72,6 +70,12 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
+        // Verifica se il piatto appartiene al ristorante dell'utente autenticato
+        if ($dish->restaurant_id !== Auth::id()) {
+            // Se il piatto non appartiene al ristorante dell'utente autenticato, reindirizza alla pagina iniziale
+            return redirect()->route('admin.dishes.index');
+        }
+
         return view('admin.dishes.edit', compact('dish'));
     }
 
@@ -80,7 +84,13 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        $dish->update($request->all());
+        $data = $request->all();
+
+        //'visible' checkbox (sarà '0' se unchecked, e '1' se checked)
+        $data['visible'] = $request->has('visible') ? 1 : 0;
+
+        //Aggiorna i dish
+        $dish->update($data);
 
         if ($request->hasFile('dish_image')) {
             $path = Storage::disk('public')->put('dish_images', $request->dish_image);

@@ -51,8 +51,8 @@
         </div>
 
         <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" value="0" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
-            <label class="form-check-label" for="visible">Nascondi il piatto</label>
+            <input type="checkbox" class="form-check-input" value="1" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
+            <label class="form-check-label" for="visible">Nascondi piatto</label>
         </div>
 
         <button type="submit" class="btn btn-primary">Crea</button>
