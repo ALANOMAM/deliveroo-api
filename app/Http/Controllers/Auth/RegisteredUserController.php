@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -22,7 +23,11 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        //mi salva tutte le tipologie prese dal database in una variabile
+        $categories = Category::all();
+
+        //mando tutte le catgorie nella vita delle registrazioni 
+        return view('auth.register',compact('categories'));
     }
 
     /**
@@ -108,6 +113,8 @@ class RegisteredUserController extends Controller
 
         // Salvataggio del ristorante associato all'utente
         $user->restaurant()->save($restaurant);
+
+        $restaurant->categories()->attach($request->categories);
 
         // Invio dell'evento di registrazione
         event(new Registered($user));

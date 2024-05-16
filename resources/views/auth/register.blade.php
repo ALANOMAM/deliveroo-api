@@ -38,7 +38,26 @@
                             </div>
                         </div>
 
+               <!--tipologie start-->
+               <div class="mb-3 d-flex">
+                {{--@dump($categories)--}}
+                <label class="mb-2" for="">Tipologia Ristorante</label>
+                @foreach($categories as $category)
+                <div class="form-check">
+                 <input 
+                 type="checkbox" 
+                 name="categories[]" 
+                 value="{{$category->id}}" 
+                 id="category-{{$category->id}}"
+                 {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
+                 >
+                 <label for="category-{{$category->id}}">{{$category->category_name}}</label>
+                </div>
+                @endforeach
+             </div>
+               <!--tipologia end-->
 
+                     
                         <div class="mb-4 row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }}</label>
                             <div class="col-md-6">
@@ -85,6 +104,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <span style="color:gray">Opzionale</span>
                             </div>
                         </div>
 
@@ -97,6 +117,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <span style="color:gray">Opzionale</span>
                             </div>
                         </div>
 
@@ -109,6 +130,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <span style="color:gray">Opzionale</span>
                             </div>
                         </div>
 
