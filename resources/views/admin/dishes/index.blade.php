@@ -13,13 +13,13 @@
 
                 {{-- Intestazione Piatti --}}
                 <thead class="bg-transparent">
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Prezzo</th>
-                    <th scope="col">Ingredienti</th>
-                    <th class="text-center" scope="col">Modifica/Cancella</th>
-                  </tr>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Ingredienti</th>
+                        <th class="text-center" scope="col">Modifica/Cancella</th>
+                    </tr>
                 </thead>
 
                 {{-- Inizio t-body tabella Piatti --}}
@@ -28,103 +28,105 @@
                     @foreach ($dishes as $dish)
 
 
-                        <tr class="shadow">
+                    <tr class="shadow">
 
-                            {{-- Immagine Piatto --}}
-                            <th class="img-dish-row d-flex align-items-center gap-3 " scope="row">
-                                <div class="image rounded-4">
-                                    @if ($dish->dish_image)
-                                    <img src="{{ asset('storage/' . $dish->dish_image )}}" alt="{{ $dish->dish_name }}">
-                                    @elseif (!$dish->dish_image)
-                                    <img src="{{ asset('https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19739.jpg') }}" alt="Placeholder">
-                                    @else
-                                    <img src="{{$dish->dish_image}}" alt="">
-                                    @endif
-                                </div>
-                                <div> 
-                                    @if ($dish->visible)
-                                    <i class="fa-sharp fa-solid fa-eye-slash"></i>
-                                    @else
-                                        <i class="fa-solid fa-eye"></i>
-                                    @endif
-                                </div>
-                            </th>
-
-                            {{-- Nome piatto --}}
-                            <th class="title-dish-row" scope="row">
-                                <h4>
-                                    {{ $dish->dish_name }}
-                                </h4>
-                            </th>
-
-                            {{-- prezzo piatto --}}
-                            <th class="title-dish-row" scope="row">
-                                <span>
-                                    {{ $dish->dish_price }} €
-                                </span>
-                            </th>
-
-                            {{-- Ingredienti piatto --}}
-                            <th class="ingedients-dish-row" scope="row">
-                                @if ($dish->ingredients)
-                                <small> 
-                                    {{$dish->ingredients}}
-                                </small>
+                        {{-- Immagine Piatto --}}
+                        <th class="img-dish-row d-flex align-items-center gap-3 " scope="row">
+                            <div class="image rounded-4">
+                                @if ($dish->dish_image)
+                                @if (Str::startsWith($dish->dish_image, ['http://', 'https://']))
+                                <img src="{{ $dish->dish_image }}" alt="{{ $dish->dish_name }}" width="100">
                                 @else
-                                <h4> 
-                                    Nussun Ingrediente inserito
-                                </h4>
+                                <img src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->dish_name }}" width="100">
                                 @endif
-                            </th>
+                                @else
+                                <img src="{{ Vite::asset('resources/img/Default_different_food_0.jpg') }}" alt="Placeholder" width="100">
+                                @endif
+                            </div>
+                            <div>
+                                @if ($dish->visible)
+                                <i class="fa-sharp fa-solid fa-eye-slash"></i>
+                                @else
+                                <i class="fa-solid fa-eye"></i>
+                                @endif
+                            </div>
+                        </th>
 
-                            {{-- Pulsanti --}}
-                            <th class="modify-dish-row" scope="row">
-                                <div class="d-flex align-items-center justify-content-center p-2 gap-2">
-                                    <span class="d-flex justify-content-between align-items-center">
-                                        <a class="text-decoration-none" href="{{route('admin.dishes.edit', $dish->id)}}">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <i class="fa-solid fa-pen-to-square fs-1"></i>
-                                            </div>
-                                        </a>
-                                    </span>
-                                    <div>
-                                        <button type="button" class="delete border-0" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash fs-2"></i></button>
+                        {{-- Nome piatto --}}
+                        <th class="title-dish-row" scope="row">
+                            <h4>
+                                {{ $dish->dish_name }}
+                            </h4>
+                        </th>
 
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered ">
-                                              <div class="modal-content">
-                                    
+                        {{-- prezzo piatto --}}
+                        <th class="title-dish-row" scope="row">
+                            <span>
+                                {{ $dish->dish_price }} €
+                            </span>
+                        </th>
+
+                        {{-- Ingredienti piatto --}}
+                        <th class="ingedients-dish-row" scope="row">
+                            @if ($dish->ingredients)
+                            <small>
+                                {{$dish->ingredients}}
+                            </small>
+                            @else
+                            <h4>
+                                Nussun Ingrediente inserito
+                            </h4>
+                            @endif
+                        </th>
+
+                        {{-- Pulsanti --}}
+                        <th class="modify-dish-row" scope="row">
+                            <div class="d-flex align-items-center justify-content-center p-2 gap-2">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    <a class="text-decoration-none" href="{{route('admin.dishes.edit', $dish->id)}}">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <i class="fa-solid fa-pen-to-square fs-1"></i>
+                                        </div>
+                                    </a>
+                                </span>
+                                <div>
+                                    <button type="button" class="delete border-0" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash fs-2"></i></button>
+
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered ">
+                                            <div class="modal-content">
+
                                                 <div class="modal-header">
-                                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Piatto</h1>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Piatto</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                    
+
                                                 <div class="modal-body">
-                                                  Sei sicuro che vuoi eliminare il piatto "{{$dish->dish_name}}" ?
+                                                    Sei sicuro che vuoi eliminare il piatto "{{$dish->dish_name}}" ?
                                                 </div>
-                                    
-                                    
+
+
                                                 <div class="modal-footer">
-                                    
+
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                                                     <form action="{{route('admin.dishes.destroy', $dish) }}" method="POST">
                                                         @csrf
                                                         @method("DELETE")
-                                                        
+
                                                         <button class="btn btn-danger">Elimina</button>
                                                     </form>
-                                    
+
                                                 </div>
-                                    
-                                              </div>
+
                                             </div>
                                         </div>
-                            
                                     </div>
-                                </div>
-                            </th>
 
-                        </tr>
+                                </div>
+                            </div>
+                        </th>
+
+                    </tr>
                     @endforeach
 
                 </tbody>
