@@ -19,16 +19,17 @@ class CategorySeeder extends Seeder
             'Messicano',
             'Giapponese',
             'Fast food',
-            'Vegetariano',
+             /*'Vegetariano',
             'Vegano',
             'Italiano',
             'Hamburger',
             'Sushi',
             'Kebab',
-            'Gourmet',
+            'Gourmet'
             'Osteria',
             'Trattoria',
-            'Panineria',
+            'Panineria',*/
+          
         ];
 
         foreach($categories as $category) {
@@ -42,3 +43,5 @@ class CategorySeeder extends Seeder
         }
     }
 }
+
+      

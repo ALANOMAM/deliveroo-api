@@ -34,6 +34,15 @@
                                 <div>
                                     <strong>Nome Attività: </strong> {{ $restaurant->restaurant_name }}
                                 </div>
+
+                                <div class="list-group-item">
+                                    <strong>Tipologia/e:</strong>
+                                    {{--@dd($categories)--}}
+                                    @foreach ($restaurant->categories as $category)
+                                    <span class="badge rounded-pill">{{$category->category_name}}</span>
+                                    @endforeach
+                                </div>
+
                                 <div>
                                     <strong>Indirizzo:</strong> {{ $restaurant->address }}
                                 </div>
