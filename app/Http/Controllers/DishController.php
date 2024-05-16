@@ -70,6 +70,12 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
+        // Verifica se il piatto appartiene al ristorante dell'utente autenticato
+        if ($dish->restaurant_id !== Auth::id()) {
+            // Se il piatto non appartiene al ristorante dell'utente autenticato, reindirizza alla pagina iniziale
+            return redirect()->route('admin.dishes.index');
+        }
+
         return view('admin.dishes.edit', compact('dish'));
     }
 
