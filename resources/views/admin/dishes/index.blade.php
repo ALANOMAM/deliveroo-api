@@ -16,6 +16,7 @@
                   <tr>
                     <th scope="col"></th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Prezzo</th>
                     <th scope="col">Ingredienti</th>
                     <th class="text-center" scope="col">Modifica/Cancella</th>
                   </tr>
@@ -55,7 +56,14 @@
                                     {{ $dish->dish_name }}
                                 </h4>
                             </th>
-                            
+
+                            {{-- prezzo piatto --}}
+                            <th class="title-dish-row" scope="row">
+                                <span>
+                                    {{ $dish->dish_price }} €
+                                </span>
+                            </th>
+
                             {{-- Ingredienti piatto --}}
                             <th class="ingedients-dish-row" scope="row">
                                 @if ($dish->ingredients)
