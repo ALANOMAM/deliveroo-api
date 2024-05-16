@@ -39,6 +39,22 @@
                         </div>
 
 
+
+                        <div class="mb-4 row">
+                            <label for="category_name" class="col-md-4 col-form-label text-md-right">{{ __('Tipologia Ristorante') }}</label>
+                            <div class="col-md-6">
+                                <input id="category_name" type="text" class="form-control @error('category_name') is-invalid @enderror" name="category_name" value="{{ old('category_name') }}" autocomplete="category_name" autofocus>
+                                @error('category_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+
+
                         <div class="mb-4 row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }}</label>
                             <div class="col-md-6">
