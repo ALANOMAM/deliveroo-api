@@ -43,10 +43,10 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
             'restaurant_name' => 'required|string|max:255',
-            'vat' => 'required|string|min:11',
+            'vat' => 'required|string|min:11|max:11',
             'address' => 'required|string|max:255',
             'image' => 'file|max:3000|nullable|mimes:jpg,bmp,png',
-            'phone' => 'nullable|min:10|max:255',
+            'phone' => 'nullable|min:10|max:16',
         ], [
 
             // messaggi in italiano per nome
@@ -68,8 +68,8 @@ class RegisteredUserController extends Controller
 
             // messaggi in italiano per vat
             'vat.required' => "Il campo della p.iva è obbligatorio",
-            'vat.min' => "Il campo della p.iva deve avere minimo :min numeri",
-            'vat.max' => "Il campo della p.iva può avere massimo :max numeri",
+            'vat.min' => "Il campo della p.iva deve avere minimo :min cifre",
+            'vat.max' => "Il campo della p.iva può avere massimo :max cifre",
 
 
             // messaggi in italiano per address

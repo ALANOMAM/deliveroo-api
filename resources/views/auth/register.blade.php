@@ -41,19 +41,22 @@
                <!--tipologie start-->
                <div class="mb-3 d-flex">
                 {{--@dump($categories)--}}
-                <label class="mb-2" for="">Tipologia Ristorante</label>
-                @foreach($categories as $category)
-                <div class="form-check">
-                 <input 
-                 type="checkbox" 
-                 name="categories[]" 
-                 value="{{$category->id}}" 
-                 id="category-{{$category->id}}"
-                 {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
-                 >
-                 <label for="category-{{$category->id}}">{{$category->category_name}}</label>
+                <label class="col-md-4 col-form-label text-md-right" for="">Tipologia Ristorante</label>
+                <div>
+                    @foreach($categories as $category)
+                    <div class="form-check">
+                        <input 
+                        type="checkbox" 
+                        name="categories[]" 
+                        value="{{$category->id}}" 
+                        id="category-{{$category->id}}"
+                        {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
+                        >
+                        <label for="category-{{$category->id}}">{{$category->category_name}}</label>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
+
              </div>
                <!--tipologia end-->
 
@@ -74,7 +77,7 @@
                         <div class="mb-4 row">
                             <label for="vat" class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}</label>
                             <div class="col-md-6">
-                                <input id="vat" type="number" class="form-control @error('vat') is-invalid @enderror" name="vat" value="{{ old('vat') }}" autocomplete="vat">
+                                <input id="vat" type="text" class="form-control @error('vat') is-invalid @enderror" name="vat" value="{{ old('vat') }}" autocomplete="vat">
                                 @error('vat')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
