@@ -88,12 +88,38 @@
                                         </a>
                                     </span>
                                     <div>
-                                        <form action="{{ route('admin.dishes.destroy', $dish) }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            @method('DELETE')
-                
-                                            <button type="submit" class="delete border-0" onclick="return confirm('Vuoi cancellare questo piatto?')"><i class="fa-solid fa-trash fs-1"></i></button>
-                                        </form>
+                                        <button type="button" class="delete border-0" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash fs-2"></i></button>
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered ">
+                                              <div class="modal-content">
+                                    
+                                                <div class="modal-header">
+                                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Piatto</h1>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                    
+                                                <div class="modal-body">
+                                                  Sei sicuro che vuoi eliminare il piatto "{{$dish->dish_name}}" ?
+                                                </div>
+                                    
+                                    
+                                                <div class="modal-footer">
+                                    
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                                    <form action="{{route('admin.dishes.destroy', $dish) }}" method="POST">
+                                                        @csrf
+                                                        @method("DELETE")
+                                                        
+                                                        <button class="btn btn-danger">Elimina</button>
+                                                    </form>
+                                    
+                                                </div>
+                                    
+                                              </div>
+                                            </div>
+                                        </div>
+                            
                                     </div>
                                 </div>
                             </th>
