@@ -31,11 +31,15 @@
 
                 <!--sidenav start-->
                 <div class="d-flex gap-4 align-items-center py-3">
-                    <a class="text-decoration-none" ><img src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:200px;" alt="logo"></a>
+                    <a class="text-decoration-none"><img src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:200px;" alt="logo"></a>
+                    @auth
                     <div data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" class=" mt-1 menu fs-5">
                         Menu
                     </div>
+                    @endauth
                 </div>
+
+
 
                 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-header">
@@ -46,7 +50,7 @@
                     </div>
 
                     <!--link sidenav-->
-                    @auth
+
                     <div class="offcanvas-body d-flex flex-column gap-4 px-5 mt-5">
                         <a class="nav-link" href="{{url('admin') }}">
                             <div class="d-flex gap-4 ps-3 my-3 align-items-center link active" id="dashboard-link">
@@ -62,7 +66,7 @@
                             </div>
                         </a>
                     </div>
-                    @endauth
+
                 </div>
                 <!--sidenav end--->
 
