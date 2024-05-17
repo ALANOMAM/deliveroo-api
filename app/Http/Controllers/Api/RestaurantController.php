@@ -8,15 +8,15 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
-        $restaurants = Restaurant::with(['categories'])->get();
+        $restaurants = Restaurant::with(['categories', 'dishes'])->get();
 
-        
+
         return response()->json([
             "success" => true,
             "results" => $restaurants
         ]);
-
     }
 }
