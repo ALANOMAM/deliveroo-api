@@ -41,7 +41,7 @@
                <!--tipologie nel form di registrazione start-->
                <div class="mb-3 d-flex">
                 {{--@dump($categories)--}}
-                <label class="mb-2" for="">Tipologia Ristorante</label>
+                <label class="mb-2" >Tipologia Ristorante</label>
                 @foreach($categories as $category)
                 <div class="form-check">
                  <input 
