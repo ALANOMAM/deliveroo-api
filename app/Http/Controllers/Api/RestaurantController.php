@@ -8,10 +8,24 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-        $restaurants = Restaurant::with(['categories', 'dishes'])->get();
+        $query = Restaurant::with('categories');
+
+        if ($request->has('categories')) {
+
+            $categories = $request->input('categories');
+
+            $categoriesArray = explode(',', $categories);
+            if ($categoriesArray) {
+                $query->whereHas('categories', function ($query) use ($categoriesArray) {
+                    $query->whereIn('category_name', $categoriesArray);
+                });
+            }
+        }
+
+        $restaurants = $query->get();
 
         return response()->json([
             "success" => true,
