@@ -42,11 +42,13 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
+            'categories' => ['required', 'exists:categories,id'],
+
             'restaurant_name' => 'required|string|max:255',
             'vat' => 'required|string|min:11|max:11',
             'address' => 'required|string|max:255',
             'image' => 'file|max:3000|nullable|mimes:jpg,bmp,png',
-            'phone' => 'nullable|min:10|max:16',
+            'phone' => 'nullable|string|min:10|max:16',
         ], [
 
             // messaggi in italiano per nome
@@ -62,6 +64,11 @@ class RegisteredUserController extends Controller
             'password.required' => 'Il campo della password è obbligatoria',
             'password.confirmed' => 'Conferma la password',
 
+            // messaggi in italiano per checkbox categorie
+            'categories.required' => 'Scegli almeno una categoria!',
+            'categories.exists' => 'Scegli almeno una categoria!',
+
+        
             // messaggi in italiano per restaurant_name
             'restaurant_name.required' => "Il campo del nome dell'attività è obbligatorio",
             'restaurant_name.max' => 'Questo campo può avere massimo :max caratteri',
@@ -70,7 +77,7 @@ class RegisteredUserController extends Controller
             'vat.required' => "Il campo della p.iva è obbligatorio",
             'vat.min' => "Il campo della p.iva deve avere minimo :min cifre",
             'vat.max' => "Il campo della p.iva può avere massimo :max cifre",
-
+            // 'vat.unique' => 'Il campo della p.iva è già stato utilizzata',
 
             // messaggi in italiano per address
             'address.required' => "Il campo dell'indirizzo è obbligatorio",

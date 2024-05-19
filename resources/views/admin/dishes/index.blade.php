@@ -11,8 +11,9 @@
 
             <table class="table">
 
-                {{-- Intestazione Piatti --}}
-                <thead class="bg-transparent">
+                {{-- Intestazione Piatti  
+                    messo in display none per ora--}}
+                <thead class="bg-transparent d-none">
                     <tr>
                         <th scope="col"></th>
                         <th scope="col">Nome</th>
@@ -20,7 +21,9 @@
                         <th scope="col">Ingredienti</th>
                         <th class="text-center" scope="col">Modifica/Cancella</th>
                     </tr>
-                </thead>
+                </thead> 
+                
+
 
                 {{-- Inizio t-body tabella Piatti --}}
 
@@ -54,28 +57,28 @@
 
                         {{-- Nome piatto --}}
                         <th class="title-dish-row" scope="row">
-                            <h4>
+                            <div class="fw-bold">
                                 {{ $dish->dish_name }}
-                            </h4>
+                            </div>
                         </th>
 
                         {{-- prezzo piatto --}}
                         <th class="title-dish-row" scope="row">
-                            <span>
+                            <div class="fw-normal">
                                 {{ $dish->dish_price }} €
-                            </span>
+                            </div>
                         </th>
 
                         {{-- Ingredienti piatto --}}
                         <th class="ingedients-dish-row" scope="row">
                             @if ($dish->ingredients)
-                            <small>
+                            <div class="fw-normal">
                                 {{$dish->ingredients}}
-                            </small>
+                            </div>
                             @else
-                            <h4>
-                                Nussun Ingrediente inserito
-                            </h4>
+                            <div class="fw-normal">
+                                Nessun Ingrediente inserito
+                            </div>
                             @endif
                         </th>
 

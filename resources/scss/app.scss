@@ -3,5 +3,25 @@
 @import './partials/dishes';
 @import './partials/sidenav';
 @import './partials/dashboard';
+@import './partials/register';
 
 @import './partials/variables';
+
+.button-primary {
+
+    margin-top: 10px;
+    padding: 12px 24px;
+
+    text-transform: uppercase;
+    font-size: bold;
+    font-weight: 16px;
+    
+    background-color: $secondaryColor;
+    color: white;
+
+    &:hover {
+        background-color: transparent;
+        color: $secondaryColor;
+        border: 1px solid $secondaryColor;
+    }
+}

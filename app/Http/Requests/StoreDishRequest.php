@@ -25,7 +25,7 @@ class StoreDishRequest extends FormRequest
     {
         return [
             'dish_name' => 'required|string|max:50',
-            'dish_price' => 'required|numeric|min:0',
+            'dish_price' => 'required|numeric|min:0|max:999,99',
             'ingredients' => 'nullable',
             'visible' => 'nullable|boolean',
             'dish_image' => 'file|max:3000|nullable|mimes:jpg,bmp,png',
@@ -41,6 +41,9 @@ class StoreDishRequest extends FormRequest
 
             'dish_price.required' => 'Il prezzo del piatto è obbligatorio inserirlo',
             'dish_price.min' => 'Il prezzo non può essere negativo',
+            'dish_price.max' => 'Il prezzo massimo consentito è 999.99 €',
+
+
 
             'dish_image.file' => "L'immagine del ristorante deve essere un file",
             'dish_image.max' => "La dimensione del file non deve superare i 3000 KB",

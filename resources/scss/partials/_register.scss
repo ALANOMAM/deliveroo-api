@@ -1,0 +1,38 @@
+@use '../partials/variables' as *;
+
+
+.my-checkboxes {
+    font-size: 12px;
+}
+
+
+
+.right-part {
+
+    position: relative;
+
+    .img-quote {
+        position: sticky;
+        top: 100px;
+
+        img {
+
+            border-radius: 10px;
+            box-shadow: 0px 3px 6px rgba(12, 12, 11, 0.5);
+
+        }
+
+        h3 {
+            color: $textColor;
+        }
+    
+    }
+    
+}
+
+
+
+
+
+
+
