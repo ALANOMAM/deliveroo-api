@@ -19,29 +19,22 @@ class CategorySeeder extends Seeder
             'Messicano',
             'Giapponese',
             'Fast food',
-             /*'Vegetariano',
             'Vegano',
+            'Vegetariano',
             'Italiano',
-            'Hamburger',
+            'Coreano',
             'Sushi',
             'Kebab',
-            'Gourmet'
-            'Osteria',
-            'Trattoria',
-            'Panineria',*/
-          
+            'Gourmet',
         ];
 
-        foreach($categories as $category) {
+        foreach ($categories as $category) {
 
             $newCategory = new Category();
 
             $newCategory->category_name = $category;
 
             $newCategory->save();
-
         }
     }
 }
-
-      

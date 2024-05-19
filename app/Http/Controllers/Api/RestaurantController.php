@@ -13,10 +13,27 @@ class RestaurantController extends Controller
 
         $restaurants = Restaurant::with(['categories', 'dishes'])->get();
 
-
         return response()->json([
             "success" => true,
             "results" => $restaurants
         ]);
+    }
+
+
+    public function show($id)
+    {
+        $restaurant = Restaurant::with(['categories', 'dishes'])->find($id);
+
+        if ($restaurant) {
+            return response()->json([
+                "success" => true,
+                "restaurant" => $restaurant
+            ]);
+        } else {
+            return response()->json([
+                "success" => false,
+                "error" => "Restaurant not found"
+            ]);
+        }
     }
 }
