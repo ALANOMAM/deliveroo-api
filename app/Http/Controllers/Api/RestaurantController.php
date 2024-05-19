@@ -11,9 +11,11 @@ class RestaurantController extends Controller
     public function index(Request $request)
     {
 
+        //recupero i ristoranti dalla tabella con anche le categorie
         $query = Restaurant::with('categories');
 
         if ($request->has('categories')) {
+
 
             $categories = $request->input('categories');
 
