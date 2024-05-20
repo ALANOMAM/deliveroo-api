@@ -38,22 +38,24 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
             'categories' => ['required', 'exists:categories,id'],
 
+            'vat' => ['required', 'string', 'min:11', 'max:11', 'unique:' . Restaurant::class],
+
             'restaurant_name' => 'required|string|max:255',
-            'vat' => 'required|string|min:11|max:11',
+            // 'vat' => 'required|unique|string|min:11|max:11',
             'address' => 'required|string|max:255',
             'image' => 'file|max:3000|nullable|mimes:jpg,bmp,png',
-            'phone' => 'nullable|string|min:10|max:16',
+            'phone' => 'nullable|string|min:13|max:16',
         ], [
 
             // messaggi in italiano per nome
-            'name.required' => 'Il campo nome è obbligatorio',
             'name.max' => 'Il campo nome può avere massimo :max caretteri',
+            'name.required' => 'Il nome è obbligatorio',
 
             // messaggi in italiano per campo email
             'email.required' => 'Il campo mail è obbligatoria',
@@ -67,7 +69,6 @@ class RegisteredUserController extends Controller
             // messaggi in italiano per checkbox categorie
             'categories.required' => 'Scegli almeno una categoria!',
             'categories.exists' => 'Scegli almeno una categoria!',
-
         
             // messaggi in italiano per restaurant_name
             'restaurant_name.required' => "Il campo del nome dell'attività è obbligatorio",
@@ -77,7 +78,7 @@ class RegisteredUserController extends Controller
             'vat.required' => "Il campo della p.iva è obbligatorio",
             'vat.min' => "Il campo della p.iva deve avere minimo :min cifre",
             'vat.max' => "Il campo della p.iva può avere massimo :max cifre",
-            // 'vat.unique' => 'Il campo della p.iva è già stato utilizzata',
+            'vat.unique' => 'Il campo della p.iva è già stato utilizzata',
 
             // messaggi in italiano per address
             'address.required' => "Il campo dell'indirizzo è obbligatorio",

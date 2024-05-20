@@ -27,12 +27,13 @@
                         <div class="mb-2 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Proprietario') }}</label>
                             <div class="col-md-7 px-0">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" required pattern="^[a-zA-Z\s']*$" title="Il nome può contenere solo lettere, spazi e l'apostrofo (')." autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" pattern="^[a-zA-Z\s']*$" title="Il nome può contenere solo lettere, spazi e l'apostrofo (')." autofocus>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <span style="color:gray">Opzionale</span>
                             </div>
                         </div>
 
@@ -140,7 +141,7 @@
                         <div class="mb-2 row">
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
                             <div class="col-md-7 px-0">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" pattern="\+39[0-9]*" minlength="12" maxlength="16" title="Inserisci un numero di telefono valido (es. +393123456789). Deve iniziare con +39" autocomplete="phone">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" pattern="\+39\s?[0-9]*" minlength="13" maxlength="16" title="Inserisci un numero di telefono valido (es. +393123456789). Deve iniziare con +39" autocomplete="phone">
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -218,6 +219,15 @@
     </div>
 
 </div>
+
+{{-- <script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        var nameInput = document.getElementById('name');
+        if (nameInput.value.trim() === '') {
+            nameInput.value = 'Ristoratore';
+        }
+    });
+</script> --}}
 
 
 @endsection

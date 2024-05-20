@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('restaurant_name');
-            $table->string('vat');
+            $table->string('vat')->unique();
             $table->string('address');
             $table->string('image')->nullable();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
