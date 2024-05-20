@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('category_restaurant', function (Blueprint $table) {
             
-            // Creazione colonna category_id & tecnology_id
+            // Creazione colonna category_id & restaurant_id
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
             

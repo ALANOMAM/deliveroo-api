@@ -10,7 +10,7 @@
 
             <h1 class="mt-3 mb-5">Fai crescere la tua attività online con JustBool!</h1>
 
-            <div class="card">
+            <div class="card reg-form">
 
                 <div class="card-header py-4 border-bottom-0">
                     <h2>Inizia a vendere su JustBool!</h2>

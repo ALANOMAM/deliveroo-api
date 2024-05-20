@@ -1,5 +1,11 @@
 @use '../partials/variables' as *;
 
+.reg-form {
+
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(12, 12, 11, 0.5);
+
+}
 
 .my-checkboxes {
     font-size: 12px;
