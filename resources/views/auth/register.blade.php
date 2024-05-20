@@ -209,7 +209,7 @@
             <div class="img-quote">
                 <img src="{{Vite::asset('resources/img/register-image.jpeg')}}" alt="">
                 <h3 class="pt-4">
-                    "Eravamo alla ricerca di una strada per entrare nella case degli italiani e JustBool ci ha fornito la soluzione!"
+                    "Eravamo alla ricerca di una strada per entrare nelle case degli italiani e JustBool ci ha fornito la soluzione!"
                 </h3>
             </div>
             
