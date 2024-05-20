@@ -38,12 +38,24 @@ class CategoryRestaurantTableSeeder extends Seeder
 
             ['category_id' => 11, 'restaurant_id' => 8],
             ['category_id' => 5, 'restaurant_id' => 8],
+            ['category_id' => 7, 'restaurant_id' => 8],
+
 
             ['category_id' => 9, 'restaurant_id' => 9],
             ['category_id' => 5, 'restaurant_id' => 9],
+            ['category_id' => 7, 'restaurant_id' => 9],
+            ['category_id' => 6, 'restaurant_id' => 9],
 
             ['category_id' => 7, 'restaurant_id' => 10],
             ['category_id' => 5, 'restaurant_id' => 10],
+
+            ['category_id' => 2, 'restaurant_id' => 11],
+            ['category_id' => 12, 'restaurant_id' => 11],
+
+            ['category_id' => 10, 'restaurant_id' => 12],
+            ['category_id' => 5, 'restaurant_id' => 12],
+            ['category_id' => 4, 'restaurant_id' => 12],
+
 
         ];
         
