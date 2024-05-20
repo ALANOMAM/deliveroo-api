@@ -46,8 +46,8 @@ Route::middleware(['auth', 'verified'])
         Route::get('/users', [DashboardController::class, 'users'])->name('users');
 
         //creazione e salvataggio dei dati sia dell'utente che del ristorante
-        Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
-        Route::post('/register', [RegisteredUserController::class, 'store']);
+        // Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+        // Route::post('/register', [RegisteredUserController::class, 'store']);
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/restaurants', RestaurantController::class);
