@@ -16,33 +16,63 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'Admin User',
-                'email' => 'adasdmin@example.com',
+                'name' => 'Alan',
+                'email' => 'alan@example.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Test User',
-                'email' => 'tasdadssdest@example.com',
+                'name' => 'Pietro',
+                'email' => 'pietro@example.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'miriam',
+                'name' => 'Miriam',
                 'email' => 'miriam@example.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'alan',
-                'email' => 'alandest@example.com',
+                'name' => 'Mario',
+                'email' => 'mario@example.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'mario',
-                'email' => 'marion@example.com',
+                'name' => 'Pitagora',
+                'email' => 'pitagora@example.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'alberto',
-                'email' => 'albertodest@example.com',
+                'name' => 'Alberta',
+                'email' => 'alberta@example.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Pamela',
+                'email' => 'pamela@example.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Tizio',
+                'email' => 'tizio@example.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Kevin',
+                'email' => 'kevin@example.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Simona',
+                'email' => 'simona@example.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Ignazio',
+                'email' => 'ignazio@example.com',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Gigi',
+                'email' => 'gigi@example.com',
                 'password' => Hash::make('password'),
             ],
         ];
