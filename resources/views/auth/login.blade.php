@@ -3,9 +3,14 @@
 @section('content')
 <div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Accedi') }}</div>
+        <div class="col-md-6">
+
+
+            <div class="card reg-form">
+
+                <div class="card-header py-4 border-bottom-0">
+                    <h2>Bentornato!</h2>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -51,17 +56,27 @@
                             </div>
                         </div>
 
+
                         <div class="mb-4 row mb-0 d-flex align-items-center">
-                            <div class="col-md-8 offset-md-4">
+                            @if (Route::has('password.request'))
+                            <a class="btn btn-link text-dark text-center" href="{{ route('password.request') }}">
+                                {{ __('Hai dimenticato la tua password?') }}
+                            </a>
+                            @endif
+                            <div class="text-center mb-3">
                                 <button type="submit" class="btn button-primary">
                                     {{ __('Accedi') }}
                                 </button>
+                            </div>
 
-                                @if (Route::has('password.request'))
-                                <a class="btn btn-link text-dark " href="{{ route('password.request') }}">
-                                    {{ __('Hai dimenticato la tua password?') }}
-                                </a>
-                                @endif
+                            <div class="text-center">
+                                <span>
+                                    Non hai un account?
+                                    <a class="btn-link text-dark" href="{{ route('register') }}">
+                                        {{ __('Registrati') }}
+                                    </a>
+                                </span>
+
                             </div>
                         </div>
                     </form>
@@ -69,5 +84,4 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

@@ -19,6 +19,10 @@ class RestaurantController extends Controller
             $query->whereHas('categories', function ($query) use ($categoriesArray) {
                 $query->whereIn('category_name', $categoriesArray);
             });
+
+            $query->whereHas('categories', function ($query) use ($categoriesArray) {
+                $query->whereIn('category_name', $categoriesArray);
+            }, '=', count($categoriesArray));
         }
 
         $restaurants = $query->paginate(5);

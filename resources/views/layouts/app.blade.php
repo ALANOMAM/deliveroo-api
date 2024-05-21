@@ -21,7 +21,9 @@
     @vite(['resources/js/app.js'])
 </head>
 
+
 <body>
+
     <div id="app">
 
         <!--navbar start-->
@@ -77,14 +79,24 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <div class="d-flex gap-4">
-                            <li class="nav-item">
+                        <div class="d-flex gap-4 auth-links ">
+                            <li class="nav-item d-none d-lg-inline-block">
                                 <a class="nav-link fs-5" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             @if (Route::has('register'))
-                            <li class="nav-item">
+                            <li class="nav-item d-none d-lg-inline-block">
                                 <a class="nav-link fs-5" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                             </li>
+                        </div>
+
+                        <div class="auth-dropdown dropdown d-lg-none d-md-inline-block">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-bars"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('login') }}">{{ __('Accedi') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('register') }}">{{ __('Registrati') }}</a></li>
+                            </ul>
                         </div>
                         @endif
                         @else
