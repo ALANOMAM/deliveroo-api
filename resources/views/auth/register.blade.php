@@ -2,11 +2,11 @@
 
 @section('content')
 
-<div class="container mt-4">
+<div class="container mt-4 ">
 
     <div class="row justify-content-center pb-5">
 
-        <div class="col-md-6">
+        <div class="col-md-6 mb-5">
 
             <h1 class="mt-3 mb-5">Fai crescere la tua attività online con JustBool!</h1>
 
@@ -53,19 +53,13 @@
 
                         {{-- CATEGORIE RISTORANTE --}}
 
-                        <div class="mb-2 d-flex">
-                            <label class="col-md-4 col-form-label text-md-right">Tipologia Ristorante</label>
-                            <div class="row w-50 ps-4">
+                        <div class="mb-2 d-flex ">
+                            <label class="col-md-4 text-md-right">Tipologia Ristorante</label>
+                            <div class="row ps-4">
                                 @foreach($categories as $category)
-                                <div class="px-0 col-4 d-flex flex-start">
+                                <div class="px-0 col-6 col-lg-4 d-flex flex-start ">
                                     <div class="form-check p-0">
-                                        <input
-                                        type="checkbox" 
-                                        name="categories[]"
-                                        value="{{$category->id}}" 
-                                        id="{{$category->id}}"
-                                        {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
-                                        >
+                                        <input type="checkbox" name="categories[]" value="{{$category->id}}" id="{{$category->id}}" {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}>
                                         <label class="my-checkboxes" for="{{$category->id}}">{{$category->category_name}}</label>
                                     </div>
                                 </div>
@@ -213,7 +207,7 @@
                     "Eravamo alla ricerca di una strada per entrare nelle case degli italiani e JustBool ci ha fornito la soluzione!"
                 </h3>
             </div>
-            
+
         </div>
 
     </div>

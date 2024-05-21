@@ -1,17 +1,36 @@
 @use '../partials/variables' as *;
 
 .reg-form {
-
     border-radius: 10px;
-    box-shadow: 0px 3px 6px rgba(12, 12, 11, 0.5);
 
+    box-shadow: 0px 3px 6px rgba(12, 12, 11, 0.5);
+}
+
+.drop-menu {
+    background-color: rgba(254, 100, 66, 1);
+}
+
+.no-caret::after {
+    display: none;
+}
+
+.drop-menu:focus {
+    outline: none !important;
+
+    background-color: rgb(251, 180, 139) !important;
 }
 
 .my-checkboxes {
     font-size: 12px;
 }
 
+.no-caret::after {
+    display: none;
+}
 
+.accedi {
+    background-color: rgba(254, 100, 66, 1);
+}
 
 .right-part {
 
@@ -19,6 +38,7 @@
 
     .img-quote {
         position: sticky;
+
         top: 100px;
 
         img {
@@ -31,14 +51,7 @@
         h3 {
             color: $textColor;
         }
-    
+
     }
-    
+
 }
-
-
-
-
-
-
-

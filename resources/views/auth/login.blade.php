@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8 col-12 col-sm-10 col-lg-6">
 
 
             <div class="card reg-form">
@@ -64,7 +64,7 @@
                             </a>
                             @endif
                             <div class="text-center mb-3">
-                                <button type="submit" class="btn button-primary">
+                                <button type="submit" class="btn button-primary accedi">
                                     {{ __('Accedi') }}
                                 </button>
                             </div>

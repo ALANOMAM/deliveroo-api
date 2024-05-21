@@ -89,9 +89,10 @@
                             </li>
                         </div>
 
+                        <!-- dropdown responsive -->
                         <div class="auth-dropdown dropdown d-lg-none d-md-inline-block">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-bars"></i>
+                            <button type="button" class="btn drop-menu dropdown-toggle no-caret" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-bars text-white"></i>
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('login') }}">{{ __('Accedi') }}</a></li>
@@ -99,6 +100,7 @@
                             </ul>
                         </div>
                         @endif
+
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
