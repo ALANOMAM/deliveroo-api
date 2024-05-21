@@ -2,27 +2,88 @@
 
 @section('content')
 
-    <div class="container py-5">
+    <div class="container col-9 py-5">
 
-        <h1 class="py-2">Ordini del ristorante:</h1>
+        <h1 class="py-2 mb-3">Ordini del tuo ristorante</h1>
 
-        @foreach($orders as $order)
-        <h2>Order #{{ $order->id }}</h2>
-        <div><strong>Prezzo ordine:</strong> {{ $order->total_price }} </div>
-        <div class="mb-3" ><strong>Data ordine:</strong> {{ $order->created_at }} </div>
+        <table class="table">
 
-        <div><strong>Ordinato da:</strong> {{ $order->customer_name }} {{ $order->customer_surname }} </div>
-        <div>Ordinato da: {{ $order->customer_email }} {{ $order->customer_phone }} </div>
-        <div><strong>Indirizzo consegna: </strong>{{ $order->customer_address }} </div>
-    
+            {{-- Intestazione Tabella --}}
+            <thead class="bg-transparent">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Utente</th>
+                    <th scope="col">Recapiti</th>
+                    <th scope="col">Indirizzo consegna</th>
+                    <th scope="col">Totale ordine</th>
+                    <th class="text-center" scope="col">Data Ordine</th>
+                </tr>
+            </thead> 
+            
 
-        <p>Piatti ordinati:</p>
-        <ul>
-            @foreach($order->dishes as $dish)
-                <li>Nome Piatto: {{ $dish->dish_name }} - Ristorante: {{ $dish->restaurant->restaurant_name }}</li>
-            @endforeach
-        </ul>
-        @endforeach
+
+            {{-- Inizio t-body tabella ordini --}}
+
+            <tbody>
+                @foreach ($orders as $order)
+
+
+                <tr class="shadow">
+
+                    {{-- Id Ordine --}}
+
+                    <th class="img-dish-row d-flex align-items-center gap-3 " scope="row">
+                        <div class="fw-bold">
+                            {{ $order->id }}
+                        </div>
+                    </th>
+
+                    {{-- Nome Cognome utente --}}
+
+                    <th class="title-dish-row" scope="row">
+                        <div class="fw-bold">
+                            {{ $order->customer_name }} {{ $order->customer_surname }}
+                        </div>
+                    </th>
+
+                    {{-- Recapiti utente --}}
+
+                    <th class="title-dish-row" scope="row">
+                        <div class="fw-normal">
+                            {{ $order->customer_email }} - {{ $order->customer_phone }}
+                        </div>
+                    </th>
+
+                    {{-- Indirizzo consegna --}}
+                    <th class="ingedients-dish-row" scope="row">
+                        <div class="fw-normal">
+                            {{ $order->customer_address }}
+                        </div>
+                    </th>
+
+                    {{-- Prezzo totale ordine --}}
+
+                    <th class="ingedients-dish-row" scope="row">
+                        <div class="fw-normal">
+                            {{ $order->total_price }} €
+                        </div>
+                    </th>
+
+                    {{-- data ordine --}}
+
+                    <th class="ingedients-dish-row" scope="row">
+                        <div class="fw-normal">
+                            {{ $order->created_at }}
+                        </div>
+                    </th>
+
+
+                </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+
     </div>
     
 @endsection
