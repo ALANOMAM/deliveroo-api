@@ -1,29 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-5">
     <h1>Ordini del ristorante</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nome cliente</th>
-                <th>Cognome cliente</th>
-                <th>Email cliente</th>
-                <th>Telefono cliente</th>
-                <th>Indirizzo cliente</th>
-                <th>Prezzo totale</th>
-                <th>Messaggio</th>
-                <th>Data creazione</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($orders as $order)
-            <tr>
-                <td>foreach vuoto</td>
-            </tr>
+        @foreach($orders as $order)
+        <h2>Order #{{ $order->id }}</h2>
+        <p>Dishes:</p>
+        <ul>
+            @foreach($order->dishes as $dish)
+                <li>{{ $dish->dish_name }} - {{ $dish->restaurant->restaurant_name }}</li>
             @endforeach
-        </tbody>
-    </table>
+        </ul>
+        @endforeach
 </div>
 @endsection
