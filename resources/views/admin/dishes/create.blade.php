@@ -13,7 +13,7 @@
 
         <div class="form-group mt-2">
             <label for="dish_name">Nome del piatto</label>
-            <input type="text" class="form-control @error('dish_name') is-invalid @enderror" id="dish_name" name="dish_name" pattern="^[a-zA-Z\s']*$" title="Il nome può contenere solo lettere, spazi e l'apostrofo (')." value="{{ old('dish_name') }}" required>
+            <input type="text" class="form-control @error('dish_name') is-invalid @enderror" id="dish_name" name="dish_name" value="{{ old('dish_name') }}" required>
             @error('dish_name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

@@ -42,7 +42,7 @@
                         <div class="mb-2 row">
                             <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome Attività') }}</label>
                             <div class="col-md-7 px-0">
-                                <input id="restaurant_name" type="text" class=" form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required pattern="^[a-zA-Z\s']*$" title="Il nome del ristorante può contenere solo lettere, spazi e l'apostrofo (')." autocomplete="restaurant_name" autofocus>
+                                <input id="restaurant_name" type="text" class=" form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
                                 @error('restaurant_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
