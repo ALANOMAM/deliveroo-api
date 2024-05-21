@@ -65,6 +65,23 @@
                                 Il tuo menù
                             </div>
                         </a>
+
+                        <a href="{{route('admin.orders.index')}}" class="nav-link">
+                            <div class="d-flex gap-4 ps-3 align-items-center link" id="menu-link">
+                                <i class="fa-solid fa-money-check-dollar fs-3"></i>
+                                I tuoi ordini
+                            </div>
+                        </a>
+
+
+                        <a href="" class="nav-link">
+                            <div class="d-flex gap-4 ps-3 align-items-center link" id="menu-link">
+                                <i class="fa-solid fa-chart-simple fs-3"></i>
+                                Statistiche-link vuoto
+                            </div>
+                        </a>
+
+                        
                     </div>
 
                 </div>
