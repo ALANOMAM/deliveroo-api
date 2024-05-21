@@ -19,10 +19,12 @@ class DishOrderTableSeeder extends Seeder
         // Inserimento delle associazioni nella tabella dish_order
         foreach ($associations as $association) {
             DB::table('dish_order')->insert([
-            'dish_id' => $association['dish_id'],
-            'order_id' => $association['order_id'],
-            'price' => $association['price'],
-            'quantity' => $association['quantity'],
+
+                'dish_id' => $association['dish_id'],
+                'order_id' => $association['order_id'],
+                'price' => $association['price'],
+                'quantity' => $association['quantity'],
+                
             ]);
     
         }
