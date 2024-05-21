@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DishController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
@@ -55,9 +56,7 @@ Route::middleware(['auth', 'verified'])
         //DishController route
         Route::resource('/dishes', DishController::class);
 
+        //OrderController route
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
-
-
-
-        //Route::resource('posts',PostController::class);
     });
