@@ -9,5 +9,19 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'customer_name',
+        'customer_surname',
+        'customer_email',
+        'customer_phone',
+        'customer_address',
+        'total_price',
+        'message',
+    ];
 
+
+    public function dishes()
+    {
+        return $this->hasMany(Dish::class);
+    }
 }
