@@ -22,6 +22,7 @@ class Order extends Model
 
     public function dishes()
     {
-        return $this->hasMany(Dish::class);
+        return $this->belongsToMany(Dish::class)
+            ->withPivot('quantity', 'price');
     }
 }
