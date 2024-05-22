@@ -11,7 +11,6 @@
             {{-- Intestazione Tabella --}}
             <thead class="bg-transparent">
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Utente</th>
                     <th scope="col">Recapiti</th>
                     <th scope="col">Indirizzo consegna</th>
@@ -29,14 +28,6 @@
 
 
                 <tr class="shadow">
-
-                    {{-- Id Ordine --}}
-
-                    <th class="img-dish-row d-flex align-items-center gap-3 " scope="row">
-                        <div class="fw-bold">
-                            {{ $order->id }}
-                        </div>
-                    </th>
 
                     {{-- Nome Cognome utente --}}
 

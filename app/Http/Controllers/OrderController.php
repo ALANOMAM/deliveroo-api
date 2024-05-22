@@ -17,7 +17,7 @@ class OrderController extends Controller
         // Recupero gli ordini che appartengono ai piatti di questo ristorante
         $orders = Order::whereHas('dishes', function ($query) use ($restaurantId) {
             $query->where('restaurant_id', $restaurantId);
-        })->with('dishes')->get();
+        })->with('dishes')->orderBy('created_at', 'desc')->get();
     
         return view('admin.orders.index', compact('orders'));
     }
