@@ -59,7 +59,7 @@ class CategoryRestaurantTableSeeder extends Seeder
 
         ];
         
-        // Inserisci le associazioni nella tabella category_restaurant
+        // Inserimento delle associazioni nella tabella category_restaurant
         foreach ($associations as $association) {
             DB::table('category_restaurant')->insert([
                 'category_id' => $association['category_id'],
