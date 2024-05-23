@@ -8,6 +8,7 @@ use App\Models\Order;
 use Braintree;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class PaymentController extends Controller
@@ -33,20 +34,20 @@ class PaymentController extends Controller
     {
 
         // Regole di validazione
-        $request->validate([
+        $validator = Validator::make($request->all(), [
 
             'customer_name' => 'required|string|max:20',
             'customer_surname' => 'required|string|max:30',
             'customer_email' => 'required|email|max:100',
             'customer_phone' => 'required|string|min:13|max:20',
             'customer_address' => 'required|string|max:80',
-            // 'totalPrice' => 'required|numeric|min:0|max:9999.99',
+            'totalPrice' => 'required|numeric|min:0|max:9999.99',
 
-            // 'nonce' => 'required|string',
-            // 'cart' => 'required|array',
-            // 'cart.*.id' => 'required|exists:dishes,id',
-            // 'cart.*.quantity' => 'required|integer|min:1',
-            // 'cart.*.price' => 'required|numeric|min:0|max:9999.99',
+            'nonce' => 'required|string',
+            'cart' => 'required|array',
+            'cart.*.id' => 'required|exists:dishes,id',
+            'cart.*.quantity' => 'required|integer|min:1',
+            'cart.*.price' => 'required|numeric|min:0|max:9999.99',
 
         ], [
 
@@ -68,27 +69,35 @@ class PaymentController extends Controller
             'customer_address.required' => 'Il campo indirizzo è obbligatorio.',
             'customer_address.max' => 'Il campo indirizzo non può superare i :max caratteri',
 
-            // 'totalPrice.required' => 'Il campo prezzo totale è obbligatorio.',
-            // 'totalPrice.numeric' => 'Il campo prezzo totale deve essere un numero.',
-            // 'totalPrice.max' => 'Il campo prezzo totale non può superare 9999.99. €',
-            // 'totalPrice.max' => 'Il campo prezzo totale non può superare :max €',
-            // 'totalPrice.min' => 'Il campo prezzo totale deve essere almeno 0.',
+            'totalPrice.required' => 'Il campo prezzo totale è obbligatorio.',
+            'totalPrice.numeric' => 'Il campo prezzo totale deve essere un numero.',
+            'totalPrice.max' => 'Il campo prezzo totale non può superare 9999.99. €',
+            'totalPrice.max' => 'Il campo prezzo totale non può superare :max €',
+            'totalPrice.min' => 'Il campo prezzo totale deve essere almeno 0.',
 
-            // 'nonce.required' => 'Il campo nonce è obbligatorio.',
-            // 'cart.required' => 'Il carrello è obbligatorio.',
-            // 'cart.array' => 'Il carrello deve essere un array.',
-            // 'cart.*.id.required' => 'L\'ID del piatto è obbligatorio.',
-            // 'cart.*.id.exists' => 'Il piatto selezionato non è valido.',
-            // 'cart.*.quantity.required' => 'La quantità è obbligatoria.',
-            // 'cart.*.quantity.integer' => 'La quantità deve essere un numero intero.',
-            // 'cart.*.quantity.min' => 'La quantità deve essere almeno 1.',
-            // 'cart.*.price.required' => 'Il prezzo è obbligatorio.',
-            // 'cart.*.price.numeric' => 'Il prezzo deve essere un numero.',
-            // 'cart.*.price.min' => 'Il prezzo deve essere almeno 0.',
-            // 'cart.*.price.max' => 'Il prezzo non può superare 9999.99.',
+            'nonce.required' => 'Il campo nonce è obbligatorio.',
+            'cart.required' => 'Il carrello è obbligatorio.',
+            'cart.array' => 'Il carrello deve essere un array.',
+            'cart.*.id.required' => 'L\'ID del piatto è obbligatorio.',
+            'cart.*.id.exists' => 'Il piatto selezionato non è valido.',
+            'cart.*.quantity.required' => 'La quantità è obbligatoria.',
+            'cart.*.quantity.integer' => 'La quantità deve essere un numero intero.',
+            'cart.*.quantity.min' => 'La quantità deve essere almeno 1.',
+            'cart.*.price.required' => 'Il prezzo è obbligatorio.',
+            'cart.*.price.numeric' => 'Il prezzo deve essere un numero.',
+            'cart.*.price.min' => 'Il prezzo deve essere almeno 0.',
+            'cart.*.price.max' => 'Il prezzo non può superare 9999.99.',
 
 
         ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ]);
+            
+        }
 
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
