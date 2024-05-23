@@ -76,7 +76,7 @@
                         </a>
 
 
-                        <a href="{{route('admin.orders.index')}}" class="nav-link">
+                        <a href="{{route('admin.')}}" class="nav-link">
                             <div class="d-flex gap-4 ps-3 align-items-center link" id="menu-link">
                                 <i class="fa-solid fa-chart-simple fs-3"></i>
                                 Statistiche
