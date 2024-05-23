@@ -6,6 +6,7 @@ use App\Http\Controllers\DishController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,5 +59,8 @@ Route::middleware(['auth', 'verified'])
 
         //OrderController route
         Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
+        //StatsController route
+        Route::get('/order-stats',[StatsController::class, 'OrderChart']);
 
     });
