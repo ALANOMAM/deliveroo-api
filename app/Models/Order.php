@@ -19,9 +19,10 @@ class Order extends Model
         'message',
     ];
 
+
     public function dishes()
     {
-        return $this->belongsToMany(Dish::class, 'dish_order');
+        return $this->belongsToMany(Dish::class)
+            ->withPivot('quantity', 'price');
     }
-
 }

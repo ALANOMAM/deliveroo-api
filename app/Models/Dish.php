@@ -28,6 +28,11 @@ class Dish extends Model
 
     public function orders()
     {
+        return $this->hasMany(Order::class);
+    }
+
+    public function orders()
+    {
         return $this->belongsToMany(Order::class, 'dish_order');
     }
 }
