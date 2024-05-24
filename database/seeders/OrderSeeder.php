@@ -55,11 +55,11 @@ class OrderSeeder extends Seeder
 
         $orders = generateRandomUsers(154);
 
-        Order::withoutEvents(function () use ($orders) {
-            foreach ($orders as $order) {
-                Order::create($order);
-            }
-        });
+        // Order::withoutEvents(function () use ($orders) {
+        //     foreach ($orders as $order) {
+        //         Order::create($order);
+        //     }
+        // });
 
         foreach ($orders as $order) {
             Order::create([
