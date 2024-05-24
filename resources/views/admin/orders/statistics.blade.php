@@ -7,7 +7,7 @@
 
         <h1 class="py-2 mb-3">Statistiche del tuo ristorante</h1>
 
-        {{--@dd($ordini)--}} 
+        {{--@dd($ordini)--}}  {{--@dd($topRestaurants)--}}  {{--@dd($orders)--}}
 
         <!--inizio parte importata-->
           <div>
@@ -19,7 +19,7 @@
           <script>
       
             //cambio l'oggetto degli ordini da php a js poi li leggo
-            let orders_in_js_encoded = '<?php echo json_encode($ordini); ?>';
+            let orders_in_js_encoded = '<?php echo json_encode($orders); ?>';
             let orders_in_js_decoded = JSON.parse(orders_in_js_encoded);
             console.log(orders_in_js_decoded);
 
@@ -32,7 +32,9 @@
               { month: 'Maggio', count: 5 },
                        ];*/
 
-             //il mio array che conterrà le componenti x e y del mio grafico          
+
+
+          /*   //il mio array che conterrà le componenti x e y del mio grafico          
             const data = [];
                        //salvo i possibili mesi dell'anno
             const month_names = ["prova","January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -49,17 +51,15 @@
             
                 }
             //console.log(data); 
+            */
 
 
             
-         /*    //il mio array che conterrà le componenti x e y del mio grafico          
+             //il mio array che conterrà le componenti x e y del mio grafico          
             const data = [];
              //salvo i possibili mesi dell'anno
             const month_names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
         
-            function venditaMensile(a){
-                return a*a;
-              }
 
             //pusho le componenti x e y del mio grafico dentro l'array
             for(let i=0; i<orders_in_js_decoded.length; i++){
@@ -69,11 +69,12 @@
             //preso dall'array sopra
             let month_name = month_names[date.getMonth()]
             
+           
+            data.push({ month:month_name , count:i });
+            
 
-
-            data.push({ month:month_name , count: venditaMensile(i) });
                 }
-            //console.log(data); */
+            //console.log(data); 
                      
            new Chart(ctx, {
               type: 'line',
