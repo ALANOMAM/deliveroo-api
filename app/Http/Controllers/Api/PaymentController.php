@@ -91,13 +91,10 @@ class PaymentController extends Controller
 
         ]);
 
-        if($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $validator->errors()
-            ]);
-            
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
+    
 
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
