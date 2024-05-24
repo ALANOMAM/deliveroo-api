@@ -35,10 +35,18 @@
             
              //il mio array che conterrà le componenti x e y del mio grafico          
             const data = [];
-
-            for(let i=0; i<orders_in_js_decoded.length; i++){
+             //salvo i possibili mesi dell'anno
+            const month_names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        
             //pusho le componenti x e y del mio grafico dentro l'array
-            data.push({ month: orders_in_js_decoded[i].customer_name , count: i });
+            for(let i=0; i<orders_in_js_decoded.length; i++){
+            //cambio il formato della mia data da stringa a data per potere usare i vari metodi
+            let date = new Date(orders_in_js_decoded[i].created_at);
+            //associo al numero del mese estratto grazie alla funzione "getMonth()" un nome del mese
+            //preso dall'array sopra
+            let month_name = month_names[date.getMonth()]
+            
+            data.push({ month:month_name , count: i });
                 }
             //console.log(data);
                      
