@@ -7,7 +7,7 @@
 
         <h1 class="py-2 mb-3">Statistiche del tuo ristorante</h1>
 
-        {{--@dd($orders)--}} 
+        {{--@dd($ordini)--}} 
 
         <!--inizio parte importata-->
           <div>
@@ -19,25 +19,48 @@
           <script>
       
             //cambio l'oggetto degli ordini da php a js poi li leggo
-            let orders_in_js_encoded = '<?php echo json_encode($orders); ?>';
+            let orders_in_js_encoded = '<?php echo json_encode($ordini); ?>';
             let orders_in_js_decoded = JSON.parse(orders_in_js_encoded);
             console.log(orders_in_js_decoded);
 
             const ctx = document.getElementById('myChart');
-           // const labels =  Utils.months({count: 7});
-           /*const data = [
+          /* const data = [
              { month: 'Gennaio', count: 10 },
              { month: 'Febbraio', count: 20 },
               { month: 'Marzo', count: 15 },
              { month: 'Aprile', count: 40 },
               { month: 'Maggio', count: 5 },
                        ];*/
-            
+
              //il mio array che conterrà le componenti x e y del mio grafico          
+            const data = [];
+                       //salvo i possibili mesi dell'anno
+            const month_names = ["prova","January","February","March","April","May","June","July","August","September","October","November","December"];
+
+               //pusho le componenti x e y del mio grafico dentro l'array
+            for(let i=0; i<orders_in_js_decoded.length; i++){
+          
+            //associo al numero del mese  un nome del mese
+            let month_name = month_names[orders_in_js_decoded[i].mese_di_ordine]
+
+            if(orders_in_js_decoded[i].mese_di_ordine <= 5){
+              data.push({ month:month_name , count:orders_in_js_decoded[i].numero_di_ordini  });
+            }
+            
+                }
+            //console.log(data); 
+
+
+            
+         /*    //il mio array che conterrà le componenti x e y del mio grafico          
             const data = [];
              //salvo i possibili mesi dell'anno
             const month_names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
         
+            function venditaMensile(a){
+                return a*a;
+              }
+
             //pusho le componenti x e y del mio grafico dentro l'array
             for(let i=0; i<orders_in_js_decoded.length; i++){
             //cambio il formato della mia data da stringa a data per potere usare i vari metodi
@@ -46,9 +69,11 @@
             //preso dall'array sopra
             let month_name = month_names[date.getMonth()]
             
-            data.push({ month:month_name , count: i });
+
+
+            data.push({ month:month_name , count: venditaMensile(i) });
                 }
-            //console.log(data);
+            //console.log(data); */
                      
            new Chart(ctx, {
               type: 'line',
@@ -73,7 +98,7 @@
               options: {
                 scales: {
                   y: {
-                    beginAtZero: true
+                    beginAtZero: false
                   }
                 }
               }
