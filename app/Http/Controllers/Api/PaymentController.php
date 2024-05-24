@@ -39,15 +39,15 @@ class PaymentController extends Controller
             'customer_name' => 'required|string|max:20',
             'customer_surname' => 'required|string|max:30',
             'customer_email' => 'required|email|max:100',
-            'customer_phone' => 'required|string|min:13|max:20',
+            'customer_phone' => 'required|string|max:20',
             'customer_address' => 'required|string|max:80',
-            // 'totalPrice' => 'required|numeric|min:0|max:9999.99',
+            'totalPrice' => 'required|min:0|max:9999',
 
-            // 'nonce' => 'required|string',
-            // 'cart' => 'required|array',
-            // 'cart.*.id' => 'required|exists:dishes,id',
-            // 'cart.*.quantity' => 'required|integer|min:1',
-            // 'cart.*.price' => 'required|numeric|min:0|max:9999.99',
+            'nonce' => 'required',
+            'cart' => 'required|array',
+            'cart.*.id' => 'required|exists:dishes,id',
+            'cart.*.quantity' => 'required|integer|min:1',
+            'cart.*.price' => 'required|numeric|min:0|max:9999',
 
         ], [
 
@@ -63,30 +63,29 @@ class PaymentController extends Controller
 
             'customer_phone.required' => 'Il campo telefono è obbligatorio.',
             'customer_phone.max' => 'Il campo telefono non può superare i :max caratteri',
-            'customer_phone.min' => 'Il campo telefono deve avere almeno :min cifre',
+            // 'customer_phone.min' => 'Il campo telefono deve avere almeno :min cifre',
 
 
             'customer_address.required' => 'Il campo indirizzo è obbligatorio.',
             'customer_address.max' => 'Il campo indirizzo non può superare i :max caratteri',
 
-            // 'totalPrice.required' => 'Il campo prezzo totale è obbligatorio.',
+            'totalPrice.required' => 'Il campo prezzo totale è obbligatorio.',
             // 'totalPrice.numeric' => 'Il campo prezzo totale deve essere un numero.',
-            // 'totalPrice.max' => 'Il campo prezzo totale non può superare 9999.99. €',
-            // 'totalPrice.max' => 'Il campo prezzo totale non può superare :max €',
-            // 'totalPrice.min' => 'Il campo prezzo totale deve essere almeno 0.',
+            'totalPrice.max' => 'Il campo prezzo totale non può superare :max €',
+            'totalPrice.min' => 'Il campo prezzo totale deve essere almeno 0.',
 
-            // 'nonce.required' => 'Il campo nonce è obbligatorio.',
-            // 'cart.required' => 'Il carrello è obbligatorio.',
-            // 'cart.array' => 'Il carrello deve essere un array.',
-            // 'cart.*.id.required' => 'L\'ID del piatto è obbligatorio.',
-            // 'cart.*.id.exists' => 'Il piatto selezionato non è valido.',
-            // 'cart.*.quantity.required' => 'La quantità è obbligatoria.',
-            // 'cart.*.quantity.integer' => 'La quantità deve essere un numero intero.',
-            // 'cart.*.quantity.min' => 'La quantità deve essere almeno 1.',
-            // 'cart.*.price.required' => 'Il prezzo è obbligatorio.',
-            // 'cart.*.price.numeric' => 'Il prezzo deve essere un numero.',
-            // 'cart.*.price.min' => 'Il prezzo deve essere almeno 0.',
-            // 'cart.*.price.max' => 'Il prezzo non può superare 9999.99.',
+            'nonce.required' => 'Il campo nonce è obbligatorio.',
+            'cart.required' => 'Il carrello è obbligatorio.',
+            'cart.array' => 'Il carrello deve essere un array.',
+            'cart.*.id.required' => 'L\'ID del piatto è obbligatorio.',
+            'cart.*.id.exists' => 'Il piatto selezionato non è valido.',
+            'cart.*.quantity.required' => 'La quantità è obbligatoria.',
+            'cart.*.quantity.integer' => 'La quantità deve essere un numero intero.',
+            'cart.*.quantity.min' => 'La quantità deve essere almeno 1.',
+            'cart.*.price.required' => 'Il prezzo è obbligatorio.',
+            'cart.*.price.numeric' => 'Il prezzo deve essere un numero.',
+            'cart.*.price.min' => 'Il prezzo deve essere almeno 0.',
+            'cart.*.price.max' => 'Il prezzo non può superare 9999',
 
 
         ]);
@@ -94,6 +93,14 @@ class PaymentController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
+
+        // if($validator->fails()) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'errors' => $validator->errors()
+        //     ]);
+            
+        // }
     
 
         $gateway = new Braintree\Gateway([
