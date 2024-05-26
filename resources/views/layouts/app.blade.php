@@ -33,7 +33,7 @@
 
                 <!--sidenav start-->
                 <div class="d-flex gap-4 align-items-center py-3">
-                    <a class="text-decoration-none"><img src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:200px;" alt="logo"></a>
+                    <a class="text-decoration-none"><img src="{{Vite::asset('resources/img/jb2.svg')}}" style="width:150px;" alt="logo"></a>
                     @auth
                     <div data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" class=" mt-1 menu fs-5">
                         Menu
@@ -52,7 +52,6 @@
                     </div>
 
                     <!--link sidenav-->
-
                     <div class="offcanvas-body d-flex flex-column gap-4 px-5 mt-5">
                         <a class="nav-link" href="{{url('admin') }}">
                             <div class="d-flex gap-4 ps-3 my-3 align-items-center link active" id="dashboard-link">
@@ -61,31 +60,27 @@
                             </div>
                         </a>
 
-                        <a href="{{route('admin.dishes.index')}}" class="nav-link">
+                        <a href="{{route('admin.dishes.index')}}" class="nav-link link-no-active">
                             <div class="d-flex gap-4 ps-3 align-items-center link" id="menu-link">
                                 <i class="fa-solid fa-utensils fs-3"></i>
                                 Il tuo menù
                             </div>
                         </a>
 
-                        <a href="{{route('admin.orders.index')}}" class="nav-link">
-                            <div class="d-flex gap-4 ps-3 align-items-center link" id="menu-link">
+                        <a href="{{route('admin.orders.index')}}" class="nav-link link-no-active">
+                            <div class="d-flex gap-4 ps-3 align-items-center link" id="order-link">
                                 <i class="fa-solid fa-money-check-dollar fs-3"></i>
                                 I tuoi ordini
                             </div>
                         </a>
 
-
-                        <a href="{{route('admin.')}}" class="nav-link">
-                            <div class="d-flex gap-4 ps-3 align-items-center link" id="menu-link">
+                        <a href="" class="nav-link link-no-active">
+                            <div class="d-flex gap-4 ps-3 align-items-center link" id="stats-link">
                                 <i class="fa-solid fa-chart-simple fs-3"></i>
                                 Statistiche
                             </div>
                         </a>
-
-                        
                     </div>
-
                 </div>
                 <!--sidenav end--->
 
@@ -160,24 +155,18 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-
-        const links = document.querySelectorAll('.link');
-
-        const setActiveLink = (activeLink) => {
-            links.forEach(function(link) {
-                link.classList.remove('active');
-            });
-            activeLink.classList.add('active');
-        };
+        const links = document.querySelectorAll('.link:not(.link-no-active)');
 
         links.forEach(function(link) {
             link.addEventListener('click', function() {
+                console.log('Link cliccato:', this.id);
                 localStorage.setItem('activeLinkId', this.id);
                 setActiveLink(this);
             });
         });
 
         const activeLinkId = localStorage.getItem('activeLinkId');
+        console.log('ID attivo salvato:', activeLinkId);
         if (activeLinkId) {
             const activeLink = document.getElementById(activeLinkId);
             if (activeLink) {
@@ -185,6 +174,15 @@
             }
         }
     });
+
+    function setActiveLink(activeLink) {
+        console.log('Impostazione link attivo:', activeLink.id);
+        const links = document.querySelectorAll('.link:not(.link-no-active)');
+        links.forEach(function(link) {
+            link.classList.remove('active');
+        });
+        activeLink.classList.add('active');
+    }
 </script>
 
 </html>
