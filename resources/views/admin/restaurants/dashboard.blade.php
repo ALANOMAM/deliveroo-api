@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary d-md-block d-none menu-button position-absolute p-2 px-3" style="bottom: 60px; left: 60px;">Vai al tuo menu</a>
+        <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary d-md-block d-none menu-button position-absolute p-2 px-3" style="bottom: 60px; left: 60px;" onclick="setMenuActiveLink()">Vai al tuo menu</a>
 
         @if ($restaurant->image)
         @if (Str::startsWith($restaurant->image, ['http://', 'https://']))
@@ -54,4 +54,15 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function setMenuActiveLink() {
+        const menuLink = document.getElementById('menu-link');
+        if (menuLink) {
+            localStorage.setItem('activeLinkId', 'menu-link');
+            setActiveLink(menuLink);
+        }
+    }
+</script>
 @endsection

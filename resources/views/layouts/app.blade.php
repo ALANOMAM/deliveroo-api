@@ -190,6 +190,7 @@
             }
         }
         localStorage.removeItem('activeLinkId');
+
     }
 </script>
 
