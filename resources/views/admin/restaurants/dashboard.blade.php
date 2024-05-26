@@ -4,11 +4,11 @@
 <div class="container p-0 position-relative overflow-hidden">
     <div class="jumbo mt-4">
         <div class="welcome-message">
-            <div class="fs-5">Ciao, {{ Auth::user()->name ?? 'Ristoratore' }},</div>
+            <div class="fs-5">Ciao {{ Auth::user()->name ?? 'Ristoratore' }},</div>
             <h1 class="text-white  display-4 fw-normal">{{ $restaurant->restaurant_name }} è su JustBool!</h1>
             <div class="list-group-item d-flex flex-wrap mt-4 gap-2 pb-5">
                 @foreach ($restaurant->categories as $category)
-                <span class="badge rounded-pill bg-white text-dark fs-6 fw-normal">{{ $category->category_name }}</span>
+                <span class="badge rounded-pill bg-white text-dark fw-normal" style="font-size: 14px;">{{ $category->category_name }}</span>
                 @endforeach
             </div>
         </div>
