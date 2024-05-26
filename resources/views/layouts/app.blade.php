@@ -74,7 +74,7 @@
                             </div>
                         </a>
 
-                        <a href="" class="nav-link link-no-active">
+                        <a href="{{route('admin.')}}" class="nav-link link-no-active">
                             <div class="d-flex gap-4 ps-3 align-items-center link" id="stats-link">
                                 <i class="fa-solid fa-chart-simple fs-3"></i>
                                 Statistiche
