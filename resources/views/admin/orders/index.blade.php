@@ -69,7 +69,7 @@
 
                     {{-- data ordine --}}
 
-                    <th scope="row">
+                    <th class="orders-data align-middle" scope="row">
                         <div class="fw-normal d-flex justify-content-center align-items-center">
                             <?php
                                 setlocale(LC_TIME, 'it_IT.UTF-8'); // Imposta la lingua italiana
@@ -84,8 +84,8 @@
                     
                     {{-- Prezzo totale ordine --}}
 
-                    <th class="orders-price text-center" scope="row">
-                        <span class="fw-normal fs-5">
+                    <th class="orders-data align-middle text-center" scope="row">
+                        <span class="fw-normal fs-5 ">
                             {{ $order->total_price }} €
                         </span>
                     </th>
