@@ -145,7 +145,10 @@ class PaymentController extends Controller
                 ]);
             }
 
-            // Invio email di conferma ordine all'utente
+            // Caricamento dei piatti associati all'ordine
+            $newOrder->load('dishes');
+
+            // Invia l'email di conferma ordine
             Mail::to($newOrder->customer_email)->send(new OrderConfirmationMail($newOrder));
 
             return response()->json([

@@ -28,29 +28,30 @@ class OrderConfirmationMail extends Mailable
     /**
      * Get the message envelope.
      */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Conferma di ordine effetuato',
-        );
-    }
+    // public function envelope(): Envelope
+    // {
+    //     return new Envelope(
+    //         replyTo: $this->order->customer_email, 
+    //         subject: 'Conferma di ordine effetuato',
+    //     );
+    // }
 
     /**
      * Get the message content definition.
      */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'emails.order_confirmation',
-        );
-    }
+    // public function content(): Content
+    // {
+    //     return new Content(
+    //         view: 'emails.user_order_confirmation.blade.php',
+    //     );
+    // }
 
     public function build()
     {
         return $this->subject('Conferma ordine')
-                    ->view('emails.order_confirmation');
+                    ->view('emails.user_order_confirmation')
+                    ->with(['order' => $this->order]);
     }
-
 
     /**
      * Get the attachments for the message.
