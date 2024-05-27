@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderConfirmationMail;
 use App\Models\Dish;
 use App\Models\Order;
 use Braintree;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -142,6 +144,9 @@ class PaymentController extends Controller
                     'price' => $item['price']
                 ]);
             }
+
+            // Invio email di conferma ordine all'utente
+            Mail::to($newOrder->customer_email)->send(new OrderConfirmationMail($newOrder));
 
             return response()->json([
                 'success' => true,
