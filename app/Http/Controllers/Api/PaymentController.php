@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\OrderConfirmationMail;
+use App\Mail\RestaurantConfirmationMail;
 use App\Models\Dish;
 use App\Models\Order;
+use App\Models\Restaurant;
 use Braintree;
 use Braintree\Gateway;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -50,6 +53,7 @@ class PaymentController extends Controller
             'cart.*.id' => 'required|exists:dishes,id',
             'cart.*.quantity' => 'required|integer|min:1',
             'cart.*.price' => 'required|numeric|min:0|max:9999',
+            'restaurantId' => 'required|exists:restaurants,id'
 
         ], [
 
@@ -101,9 +105,9 @@ class PaymentController extends Controller
         //         'success' => false,
         //         'errors' => $validator->errors()
         //     ]);
-            
+
         // }
-    
+
 
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -148,9 +152,10 @@ class PaymentController extends Controller
 
             // Caricamento dei piatti associati all'ordine
             // $newOrder->load('dishes');
-
+            $restaurant = Restaurant::findOrFail($request->restaurantId);
             // Invia l'email di conferma ordine
             Mail::to($newOrder->customer_email)->send(new OrderConfirmationMail($newOrder));
+            Mail::to($restaurant->user->email)->send(new RestaurantConfirmationMail($newOrder));
 
             return response()->json([
                 'success' => true,
