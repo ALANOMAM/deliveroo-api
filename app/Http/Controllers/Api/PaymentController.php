@@ -8,6 +8,7 @@ use App\Models\Order;
 use Braintree;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class PaymentController extends Controller
@@ -31,6 +32,77 @@ class PaymentController extends Controller
 
     public function payment(Request $request)
     {
+
+        // Regole di validazione
+        $validator = Validator::make($request->all(), [
+
+            'customer_name' => 'required|string|max:20',
+            'customer_surname' => 'required|string|max:30',
+            'customer_email' => 'required|email|max:100',
+            'customer_phone' => 'required|string|max:20',
+            'customer_address' => 'required|string|max:80',
+            'totalPrice' => 'required|min:0|max:9999',
+
+            'nonce' => 'required',
+            'cart' => 'required|array',
+            'cart.*.id' => 'required|exists:dishes,id',
+            'cart.*.quantity' => 'required|integer|min:1',
+            'cart.*.price' => 'required|numeric|min:0|max:9999',
+
+        ], [
+
+            // Messaggi di errore personalizzati
+            'customer_name.required' => 'Il campo nome è obbligatorio.',
+            'customer_name.max' => 'Il campo nome non può superare i :max caratteri',
+            'customer_surname.required' => 'Il campo cognome è obbligatorio.',
+            'customer_surname.max' => 'Il campo cognome non può superare i :max caratteri',
+
+            'customer_email.required' => 'Il campo email è obbligatorio.',
+            'customer_email.email' => 'Deve essere un indirizzo email valido.',
+            'customer_email.max' => 'Il campo email non può superare i :max caratteri',
+
+            'customer_phone.required' => 'Il campo telefono è obbligatorio.',
+            'customer_phone.max' => 'Il campo telefono non può superare i :max caratteri',
+            // 'customer_phone.min' => 'Il campo telefono deve avere almeno :min cifre',
+
+
+            'customer_address.required' => 'Il campo indirizzo è obbligatorio.',
+            'customer_address.max' => 'Il campo indirizzo non può superare i :max caratteri',
+
+            'totalPrice.required' => 'Il campo prezzo totale è obbligatorio.',
+            // 'totalPrice.numeric' => 'Il campo prezzo totale deve essere un numero.',
+            'totalPrice.max' => 'Il campo prezzo totale non può superare :max €',
+            'totalPrice.min' => 'Il campo prezzo totale deve essere almeno 0.',
+
+            'nonce.required' => 'Il campo nonce è obbligatorio.',
+            'cart.required' => 'Il carrello è obbligatorio.',
+            'cart.array' => 'Il carrello deve essere un array.',
+            'cart.*.id.required' => 'L\'ID del piatto è obbligatorio.',
+            'cart.*.id.exists' => 'Il piatto selezionato non è valido.',
+            'cart.*.quantity.required' => 'La quantità è obbligatoria.',
+            'cart.*.quantity.integer' => 'La quantità deve essere un numero intero.',
+            'cart.*.quantity.min' => 'La quantità deve essere almeno 1.',
+            'cart.*.price.required' => 'Il prezzo è obbligatorio.',
+            'cart.*.price.numeric' => 'Il prezzo deve essere un numero.',
+            'cart.*.price.min' => 'Il prezzo deve essere almeno 0.',
+            'cart.*.price.max' => 'Il prezzo non può superare 9999',
+
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // if($validator->fails()) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'errors' => $validator->errors()
+        //     ]);
+            
+        // }
+    
+
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
