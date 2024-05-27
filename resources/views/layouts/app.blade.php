@@ -74,10 +74,10 @@
                             </div>
                         </a>
 
-                        <a href="" class="nav-link link-no-active">
+                        <a href="{{route('admin.')}}" class="nav-link link-no-active">
                             <div class="d-flex gap-4 ps-3 align-items-center link" id="stats-link">
                                 <i class="fa-solid fa-chart-simple fs-3"></i>
-                                Statistiche-link vuoto
+                                Statistiche
                             </div>
                         </a>
                     </div>
@@ -122,14 +122,11 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('admin') }}">{{__('Dashboard')}}</a>
                                 <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit(); resetActiveLink();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
-
                                 </form>
                             </div>
                         </li>
@@ -182,6 +179,18 @@
             link.classList.remove('active');
         });
         activeLink.classList.add('active');
+    }
+
+    function resetActiveLink() {
+        if (window.location.pathname !== '/admin') {
+            console.log("Current page is not the dashboard. Setting active link to dashboard...");
+            const dashboardLink = document.getElementById('dashboard-link');
+            if (dashboardLink) {
+                setActiveLink(dashboardLink);
+            }
+        }
+        localStorage.removeItem('activeLinkId');
+
     }
 </script>
 

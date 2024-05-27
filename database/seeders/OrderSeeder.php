@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class OrderSeeder extends Seeder
 {
@@ -19,6 +20,8 @@ class OrderSeeder extends Seeder
             $names = ['Mario', 'Gino', 'Pietro', 'Alan', 'Miriam', 'Giulia', 'Luana', 'Laura', 'Andrea', 'Valeria'];
             $surnames = ['Rossi', 'Bianchi', 'Verdi', 'Neri', 'Gialli', 'Blu', 'Rosa', 'Grigi', 'Viola', 'Marroni'];
             $streets = ['Palermo', 'Ungaretti', 'Leopardi', 'Serpotta', 'Cagliari', 'Mattarella', 'Giulio Cesare', 'Roma', 'Libertà', 'San Domenico'];
+            $startDate = Carbon::now()->subYear()->timestamp;
+            $endDate = Carbon::now()->timestamp;
         
             for ($i = 0; $i < $numUsers; $i++) {
                 $name = $names[array_rand($names)];
@@ -28,6 +31,10 @@ class OrderSeeder extends Seeder
                 $address = 'Via ' . $streets[array_rand($streets)] . ', ' . rand(1, 50) . ', ' . 'Milano';
                 $totalPrice = rand(30, 200);
                 $message = null;
+
+                $randomTimestamp = rand($startDate, $endDate);
+               
+                $created_at = Carbon::createFromTimestamp($randomTimestamp);
         
                 $users[] = [
                     'customer_name' => $name,
@@ -37,6 +44,9 @@ class OrderSeeder extends Seeder
                     'customer_address' => $address,
                     'total_price' => $totalPrice,
                     'message' => $message,
+                    'created_at' => $created_at,
+                    'updated_at' => $created_at, 
+
                 ];
             }
         
@@ -44,6 +54,12 @@ class OrderSeeder extends Seeder
         }
 
         $orders = generateRandomUsers(154);
+
+        // Order::withoutEvents(function () use ($orders) {
+        //     foreach ($orders as $order) {
+        //         Order::create($order);
+        //     }
+        // });
 
         foreach ($orders as $order) {
             Order::create([
@@ -55,6 +71,10 @@ class OrderSeeder extends Seeder
                 'customer_address' => $order['customer_address'],
                 'total_price' => $order['total_price'],
                 'message' => $order['message'],
+                'created_at' => $order['created_at'],
+                'updated_at' => $order['updated_at'],
+
+
 
             ]);
             
