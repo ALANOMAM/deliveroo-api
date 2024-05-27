@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -9,7 +10,8 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewContact extends Mailable
+
+class OrderConfirmationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,9 +20,9 @@ class NewContact extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct($lead)
+    public function __construct($_lead)
     {
-        $this->lead = $lead;
+        $this->lead = $_lead;
     }
 
     /**
@@ -29,8 +31,8 @@ class NewContact extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            replyTo: $this->lead->address, 
-            subject: 'Nuovo ordine arrivato',
+            replyTo: $this->lead->customer_email,
+            subject: 'Conferma di ordine effettuato',
         );
     }
 
@@ -40,9 +42,16 @@ class NewContact extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.new-contact',
+            view: 'emails.user_order_confirmation',
         );
     }
+
+    // public function build()
+    // {
+    //     return $this->subject('Conferma ordine')
+    //                 ->view('emails.user_order_confirmation')
+    //                 ->with(['order' => $this->order]);
+    // }
 
     /**
      * Get the attachments for the message.
