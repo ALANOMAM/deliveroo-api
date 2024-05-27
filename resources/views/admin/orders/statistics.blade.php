@@ -7,7 +7,7 @@
 
         <h1 class="py-2 mb-3">Statistiche del tuo ristorante</h1>
 
-        {{--@dd($ordini)--}}  {{--@dd($topRestaurants)--}}  {{--@dd($orders)--}}
+        {{--@dd($orders)--}}
 
         <!--inizio parte importata-->
           <div>
@@ -32,49 +32,23 @@
               { month: 'Maggio', count: 5 },
                        ];*/
 
-
-
-          /*   //il mio array che conterrà le componenti x e y del mio grafico          
-            const data = [];
-                       //salvo i possibili mesi dell'anno
-            const month_names = ["prova","January","February","March","April","May","June","July","August","September","October","November","December"];
-
-               //pusho le componenti x e y del mio grafico dentro l'array
-            for(let i=0; i<orders_in_js_decoded.length; i++){
-          
-            //associo al numero del mese  un nome del mese
-            let month_name = month_names[orders_in_js_decoded[i].mese_di_ordine]
-
-            if(orders_in_js_decoded[i].mese_di_ordine <= 5){
-              data.push({ month:month_name , count:orders_in_js_decoded[i].numero_di_ordini  });
-            }
-            
-                }
-            //console.log(data); 
-            */
-
-
-            
              //il mio array che conterrà le componenti x e y del mio grafico          
             const data = [];
              //salvo i possibili mesi dell'anno
-            const month_names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            const month_names = ["","January","February","March","April","May","June","July","August","September","October","November","December"];
         
 
             //pusho le componenti x e y del mio grafico dentro l'array
             for(let i=0; i<orders_in_js_decoded.length; i++){
-            //cambio il formato della mia data da stringa a data per potere usare i vari metodi
-            let date = new Date(orders_in_js_decoded[i].created_at);
-            //associo al numero del mese estratto grazie alla funzione "getMonth()" un nome del mese
-            //preso dall'array sopra
-            let month_name = month_names[date.getMonth()]
-            
+            //associo al numero del mese estratto  un nome del mese preso dall'array sopra
+            let month_name = month_names[orders_in_js_decoded[i].month_number]
            
-            data.push({ month:month_name , count:i });
-            
-
+            if(orders_in_js_decoded[i].month_number <= 5){
+              data.push({ month:month_name , cash_in:orders_in_js_decoded[i].money_per_month });
+            }
                 }
-            //console.log(data); 
+            console.log(data); 
+
                      
            new Chart(ctx, {
               type: 'line',
@@ -88,7 +62,7 @@
                  
                  //dato nell'asse delle y 
                //data: [65, 59, 80, 81, 56, 55, 40, 100],
-               data: data.map(row => row.count),
+               data: data.map(row => row.cash_in),
 
                 //riempie o no la parte sotto la linea del grafico
                 fill: true,
