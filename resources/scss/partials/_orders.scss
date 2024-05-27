@@ -1,0 +1,19 @@
+@use '../partials/variables' as *;
+
+body {
+    background-color: rgba(243, 242, 247, 1);
+}
+
+.orders-head {
+    background-color: transparent !important;
+}
+
+.orders-shadow {
+    box-shadow: 0 1px 1px rgba(61, 61, 61, 0.659);
+}
+
+.orders-data {
+    i {
+        color: $secondaryColor;
+    }
+}
