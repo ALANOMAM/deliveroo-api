@@ -124,6 +124,7 @@ class PaymentController extends Controller
         ]);
 
         if ($result->success) {
+
             $newOrder = Order::create([
                 'customer_name' => $request->customer_name,
                 'customer_surname' => $request->customer_surname,
@@ -146,7 +147,7 @@ class PaymentController extends Controller
             }
 
             // Caricamento dei piatti associati all'ordine
-            $newOrder->load('dishes');
+            // $newOrder->load('dishes');
 
             // Invia l'email di conferma ordine
             Mail::to($newOrder->customer_email)->send(new OrderConfirmationMail($newOrder));
