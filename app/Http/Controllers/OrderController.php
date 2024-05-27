@@ -15,9 +15,15 @@ class OrderController extends Controller
         $restaurantId = Auth::user()->restaurant->id;
 
         // Recupero gli ordini che appartengono ai piatti di questo ristorante
+        // $orders = Order::whereHas('dishes', function ($query) use ($restaurantId) {
+        //     $query->where('restaurant_id', $restaurantId);
+        // })->with('dishes')->orderBy('created_at', 'desc')->get();
+
         $orders = Order::whereHas('dishes', function ($query) use ($restaurantId) {
             $query->where('restaurant_id', $restaurantId);
-        })->with('dishes')->orderBy('created_at', 'desc')->get();
+        })->with(['dishes' => function ($query) {
+            $query->withPivot('quantity', 'price');
+        }])->orderBy('created_at', 'desc')->get();
     
         return view('admin.orders.index', compact('orders'));
     }

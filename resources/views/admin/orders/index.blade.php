@@ -17,13 +17,11 @@
                     <th scope="col">Recapiti</th>
                     <th scope="col" class="text-center">Data Ordine</th>
                     <th scope="col" class="text-center">Totale ordine</th>
-                    
+                    {{-- <th scope="col" class="text-center">Riepilogo</th> --}}
 
                 </tr>
             </thead> 
-            
-
-
+        
             {{-- Inizio t-body tabella ordini --}}
 
             <tbody>
@@ -87,12 +85,21 @@
                     {{-- Prezzo totale ordine --}}
 
                     <th class="orders-price text-center" scope="row">
-                        <span class="fw-normal fs-5 ">
+                        <span class="fw-normal fs-5">
                             {{ $order->total_price }} €
                         </span>
                     </th>
 
-
+                    {{-- <th class="orders-price align-middle text-center" scope="row">
+                        
+                        <i id="eye-icon" class="fa-solid fa-eye toggle-details"></i>
+                        
+                        @foreach($order->dishes as $dish)
+                        <div class="fw-normal d-none">
+                          <span id="order-details">{{ $dish->pivot->quantity }} x {{ $dish->dish_name }} = {{ $dish->pivot->price }}€</span>
+                        </div>
+                        @endforeach
+                    </th> --}}
 
                 </tr>
                 @endforeach
@@ -101,5 +108,14 @@
         </table>
 
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#eye-icon").click(function() {
+                $("#order-details").toggleClass("d-none"); // Toggle visibility directly using ID
+            });
+        });
+    </script>
     
 @endsection
+

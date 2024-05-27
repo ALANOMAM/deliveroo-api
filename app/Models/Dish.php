@@ -33,6 +33,7 @@ class Dish extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Order::class, 'dish_order');
+        // return $this->belongsToMany(Order::class, 'dish_order');
+        return $this->belongsToMany(Order::class)->withPivot('quantity', 'price');
     }
 }
