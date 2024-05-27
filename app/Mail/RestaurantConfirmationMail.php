@@ -32,7 +32,7 @@ class RestaurantConfirmationMail extends Mailable
     {
         return new Envelope(
             replyTo: $this->lead->customer_email,
-            subject: 'Conferma di ordine effettuato',
+            subject: 'Nuovo ordine ricevuto',
         );
     }
 
