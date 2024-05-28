@@ -109,13 +109,13 @@
 
     </div>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $("#eye-icon").click(function() {
                 $("#order-details").toggleClass("d-none"); // Toggle visibility directly using ID
             });
         });
-    </script>
+    </script> --}}
     
 @endsection
 
