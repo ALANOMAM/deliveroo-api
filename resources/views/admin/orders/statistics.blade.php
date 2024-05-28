@@ -60,7 +60,7 @@
                 labels: data.map(row => row.month) ,
                 datasets: [{
                  //nome tabella    
-                 label: 'Statistiche collegate al tuo ristorante',
+                 label: 'Statistiche dei mesi e ammontare delle vendite',
                  
                  //dato nell'asse delle y 
                //data: [65, 59, 80, 81, 56, 55, 40, 100],
