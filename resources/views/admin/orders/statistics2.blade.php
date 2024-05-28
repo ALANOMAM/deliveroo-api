@@ -10,9 +10,9 @@
     {{--@dd($orders2)--}}
 
  <!--inizio parte importata-->
- <a href="{{url('admin/order-stats')}}" class="nav-link link-no-active">
-    <span style="color:#eb6b3e"><strong>Vai al grafico(mesi-entrata) </strong> </span>            
-  </a>
+ <a href="{{url('admin/order-stats')}}" class="btn" style="background-color:#eb6b3e" >
+ <span style="color:white">Vai al grafico(mesi-entrata)</span>       
+ </a>
 
  <div>
   <canvas id="myChart"></canvas>
@@ -42,7 +42,7 @@
    //il mio array che conterrà le componenti x e y del mio grafico          
   const data2 = [];
    //salvo i possibili mesi dell'anno
-  const month_names2 = ["","January","February","March","April","May","June","July","August","September","October","November","December"];
+  const month_names2 = [ "","January","February","March","April","May","June","July","August","September","October","November","December"];
 
 
   //pusho le componenti x e y del mio grafico dentro l'array
@@ -50,9 +50,7 @@
   //associo al numero del mese estratto  un nome del mese preso dall'array sopra
   let month_name = month_names2[orders_in_js_decoded2[i].month_number]
  
-  if(orders_in_js_decoded2[i].month_number <= 5){
-    data2.push({ month:month_name , orders_number:orders_in_js_decoded2[i].orders_per_month });
-  }
+  data2.push({ month:month_name , orders_number:orders_in_js_decoded2[i].orders_per_month });
       }
   console.log(data2); 
 
@@ -80,7 +78,7 @@
     options: {
       scales: {
         y: {
-          beginAtZero: false
+          beginAtZero: true
         }
       }
     }
