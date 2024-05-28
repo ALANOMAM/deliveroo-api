@@ -32,7 +32,7 @@ class OrderConfirmationMail extends Mailable
     {
         return new Envelope(
             replyTo: $this->lead->customer_email,
-            subject: 'Conferma di ordine effettuato',
+            subject: 'Conferma del tuo ordine su JustBool',
         );
     }
 
@@ -46,12 +46,6 @@ class OrderConfirmationMail extends Mailable
         );
     }
 
-    // public function build()
-    // {
-    //     return $this->subject('Conferma ordine')
-    //                 ->view('emails.user_order_confirmation')
-    //                 ->with(['order' => $this->order]);
-    // }
 
     /**
      * Get the attachments for the message.
