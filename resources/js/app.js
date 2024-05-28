@@ -9,8 +9,8 @@ import.meta.glob([
 
 
 
-$(document).ready(function(){
-    $(".toggle-details").click(function(){
-    $(this).closest('th').find('.fw-normal').toggleClass('d-none');
-    });
-});
+// $(document).ready(function(){
+//     $(".toggle-details").click(function(){
+//     $(this).closest('th').find('.fw-normal').toggleClass('d-none');
+//     });
+// });
