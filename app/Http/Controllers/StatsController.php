@@ -16,7 +16,7 @@ class StatsController extends Controller
     // Ottiengo l'ID del ristorante dell'utente loggato
     $restaurantId = Auth::user()->restaurant->id;
 
-    // Recupero gli ordini che appartengono ai piatti di questo ristorante
+    // Recupero la somma delle vendite  fatte per mese partendo dagli ordini che appartengono ai piatti di questo ristorante
     $orders = Order::whereHas('dishes', function ($query) use ($restaurantId) {
       $query->where('restaurant_id', $restaurantId);
     })
@@ -26,6 +26,46 @@ class StatsController extends Controller
       ->orderBy(FacadesDB::raw('MONTH(created_at)'), 'asc')
       ->get();
 
-    return view('admin.orders.statistics', compact('orders'));
+
+     // Ottiengo l'ID del ristorante dell'utente loggato
+     $restaurantId = Auth::user()->restaurant->id;
+
+     // Recupero il numero di ordini fatti per mese partendo dagli ordini che appartengono ai piatti di questo ristorante
+      $orders2 = Order::whereHas('dishes', function ($query) use ($restaurantId) {
+          $query->where('restaurant_id', $restaurantId);
+      })->with('dishes')
+      ->select(FacadesDB::raw('COUNT(total_price) as orders_per_month'), FacadesDB::raw('MONTH(created_at) as month_number'))
+      ->groupBy(FacadesDB::raw('MONTH(created_at)'))
+      ->orderBy(FacadesDB::raw('MONTH(created_at)'), 'asc')
+      ->get();
+
+
+    return view('admin.orders.statistics', compact('orders','orders2'));
   }
+
+  public function OrderChart2()
+  {
+
+     // Ottiengo l'ID del ristorante dell'utente loggato
+     $restaurantId = Auth::user()->restaurant->id;
+
+     // Recupero il numero di ordini fatti per mese partendo dagli ordini che appartengono ai piatti di questo ristorante
+      $orders2 = Order::whereHas('dishes', function ($query) use ($restaurantId) {
+          $query->where('restaurant_id', $restaurantId);
+      })->with('dishes')
+      ->select(FacadesDB::raw('COUNT(total_price) as orders_per_month'), FacadesDB::raw('MONTH(created_at) as month_number'))
+      ->groupBy(FacadesDB::raw('MONTH(created_at)'))
+      ->orderBy(FacadesDB::raw('MONTH(created_at)'), 'asc')
+      ->get();
+
+
+    return view('admin.orders.statistics2', compact('orders2'));
+  }
+
+
+
+
+
+
+
 }

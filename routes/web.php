@@ -63,4 +63,7 @@ Route::middleware(['auth', 'verified'])
         //StatsController route
         Route::get('/order-stats',[StatsController::class, 'OrderChart']);
 
+        //StatsController route
+        Route::get('/order-stats2',[StatsController::class, 'OrderChart2']);
+
     });
