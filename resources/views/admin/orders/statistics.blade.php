@@ -14,7 +14,9 @@
             <canvas id="myChart"></canvas>
           </div>
           
-           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+          <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
           
           <script>
       
@@ -51,7 +53,7 @@
 
                      
            new Chart(ctx, {
-              type: 'line',
+              type: 'bar',
               data: {
                 //dato nell'asse delle x 
                 // labels:['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'] ,
