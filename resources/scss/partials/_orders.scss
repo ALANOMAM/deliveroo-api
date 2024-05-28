@@ -1,19 +1,51 @@
 @use '../partials/variables' as *;
 
-body {
-    background-color: rgba(243, 242, 247, 1);
+/* Stile del modale */
+.order_modal {
+
+    display: none;
+
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; 
+    height: 500px; 
+    background-color: white;
+    box-shadow: 1px 4px 4px 0px rgba(246, 90, 0, 0.43);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.orders-head {
-    background-color: transparent !important;
+/* Contenitore del modale */
+.summary-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
 }
 
-.orders-shadow {
-    box-shadow: 0 1px 1px rgba(61, 61, 61, 0.659);
+/* Immagini all'interno del modale */
+.summary-content img {
+    width: 90px;
 }
 
-.orders-data {
-    i {
-        color: $secondaryColor;
-    }
+/* Pulsante di chiusura */
+.close-order {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 35px;
+}
+
+.close-order:hover,
+.close-order:focus {
+    color: $secondaryColor;
+    text-decoration: none;
+    cursor: pointer;
 }

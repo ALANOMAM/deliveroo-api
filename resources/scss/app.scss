@@ -4,8 +4,14 @@
 @import './partials/sidenav';
 @import './partials/dashboard';
 @import './partials/register';
+@import './partials/_orders';
+
 
 @import './partials/variables';
+
+main {
+    position: relative;
+}
 
 .button-primary {
 

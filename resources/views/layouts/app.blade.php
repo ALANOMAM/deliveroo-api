@@ -144,7 +144,7 @@
 
 
 
-        <main class="">
+        <main class="position-relative">
             @yield('content')
         </main>
     </div>

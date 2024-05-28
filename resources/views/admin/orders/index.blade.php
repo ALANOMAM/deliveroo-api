@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container col-9 py-5">
+    <div class="container col-9 py-5 position-relative">
 
         <h1 class="py-2 mb-3">Ordini del tuo ristorante</h1>
 
@@ -17,7 +17,7 @@
                     <th scope="col">Recapiti</th>
                     <th scope="col" class="text-center">Data Ordine</th>
                     <th scope="col" class="text-center">Totale ordine</th>
-                    {{-- <th scope="col" class="text-center">Riepilogo</th> --}}
+                    <th scope="col" class="text-center">Riepilogo</th>
 
                 </tr>
             </thead> 
@@ -90,32 +90,50 @@
                         </span>
                     </th>
 
-                    {{-- <th class="orders-price align-middle text-center" scope="row">
-                        
-                        <i id="eye-icon" class="fa-solid fa-eye toggle-details"></i>
-                        
-                        @foreach($order->dishes as $dish)
-                        <div class="fw-normal d-none">
-                          <span id="order-details">{{ $dish->pivot->quantity }} x {{ $dish->dish_name }} = {{ $dish->pivot->price }}€</span>
-                        </div>
-                        @endforeach
-                    </th> --}}
+                    {{-- Riepilogo ordine --}}
+                    
+                    <th class="orders-price align-middle text-center" scope="row">
+                        <i id="eye-icon-{{ $order->id }}" class="fa-solid fa-eye eye-icon"></i>
+                    </th>
 
                 </tr>
+
+
+                <!-- Modale nascosto -->
+                <div id="orderDetailsModal-{{ $order->id }}" class="order_modal">
+                    <div class="summary-content">
+                        <span class="close-order">
+                            <i class="fa-solid fa-x"></i>
+                        </span>
+                        <div class="riepilogo d-flex flex-column justify-content-between align-items-start gap-4">
+                            @foreach($order->dishes as $dish)
+                            <div>
+                                @if ($dish->dish_image)
+                                @if (Str::startsWith($dish->dish_image, ['http://', 'https://']))
+                                    <img src="{{ $dish->dish_image }}" alt="{{ $dish->dish_name }}">
+                                @else
+                                    <img src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->dish_name }}" alt="Placeholder">
+                                @endif
+                                @else
+                                    <img src="{{ Vite::asset('resources/img/Default_different_food_0.jpg') }}" alt="Placeholder">
+                                @endif
+
+                                <span id="order-details">{{ $dish->pivot->quantity }} x {{ $dish->dish_name }} = {{ $dish->pivot->price }}€</span>
+                                
+                            </div>
+                            
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
                 @endforeach
 
+
             </tbody>
+
         </table>
 
     </div>
-
-    {{-- <script>
-        $(document).ready(function() {
-            $("#eye-icon").click(function() {
-                $("#order-details").toggleClass("d-none"); // Toggle visibility directly using ID
-            });
-        });
-    </script> --}}
     
 @endsection
 
