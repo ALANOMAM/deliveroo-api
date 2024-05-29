@@ -103,7 +103,16 @@ img {
     }
 
     .add-dish {
-        width: 50%;
+        width: 40%;
+    }
+
+}
+
+@media screen and (max-width: 620px) {
+
+
+    .add-dish {
+        width: 45%;
     }
 
 }
