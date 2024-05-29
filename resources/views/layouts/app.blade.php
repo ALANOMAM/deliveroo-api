@@ -114,7 +114,7 @@
                         @endif
 
                         @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown d-none d-lg-block">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name === null ? 'Ristoratore' : Auth::user()->name}}
                             </a>
@@ -130,6 +130,21 @@
                                 </form>
                             </div>
                         </li>
+
+                        <!-- dropdown responsive -->
+                        <div class="auth-dropdown dropdown d-lg-none d-md-inline-block">
+                            <button type="button" class="btn drop-menu dropdown-toggle no-caret" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-bars text-white"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ url('admin') }}">{{__('Dashboard')}}</a>
+                                <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit(); resetActiveLink();">{{ __('Logout') }}</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
                         @endguest
                     </ul>
 
