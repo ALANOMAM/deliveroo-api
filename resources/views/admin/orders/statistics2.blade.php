@@ -7,16 +7,14 @@
 
         <h1 class="py-2 mb-3">Statistiche del tuo ristorante</h1>
 
-    {{--@dd($orders2)--}}
+        <!--inizio parte importata-->
+        <a href="{{url('admin/order-stats')}}" class="btn" style="background-color:#eb6b3e" >
+        <span style="color:white">Vai al grafico(mesi-entrata)</span>       
+        </a>
 
- <!--inizio parte importata-->
- <a href="{{url('admin/order-stats')}}" class="btn" style="background-color:#eb6b3e" >
- <span style="color:white">Vai al grafico(mesi-entrata)</span>       
- </a>
-
- <div>
-  <canvas id="myChart"></canvas>
-</div>
+        <div>
+          <canvas id="myChart-two"></canvas>
+        </div>
 
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
@@ -30,7 +28,7 @@
   let orders_in_js_decoded2 = JSON.parse(orders_in_js_encoded2);
   console.log(orders_in_js_decoded2);
 
-  const ctx2 = document.getElementById('myChart');
+  const ctx2 = document.getElementById('myChart-two');
 /* const data = [
    { month: 'Gennaio', count: 10 },
    { month: 'Febbraio', count: 20 },

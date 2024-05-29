@@ -1,6 +1,36 @@
 @use '../partials/variables' as *;
 
+#orders-table {
+    color: $textColor;
+}
 
+
+.fa-envelope,
+.fa-phone {
+    color: $textColor;
+}
+
+.mail_phone,
+.mail-show,
+.phone-show {
+    display: none;
+}
+
+.order-date {
+    background-color: green;
+    color: white;
+}
+
+.order-date-small {
+    display: none;
+
+    background-color: green;
+    color: white;
+}
+
+.order-price {
+    font-size: 18px;
+}
 /* Stile del modale riepilogo ordini */
 .order_modal {
 
@@ -87,43 +117,7 @@
     flex-grow: 1;
 }
 
-
-
-
-
-
-
-#orders-table {
-    color: $textColor;
-}
-
-
-.fa-envelope,
-.fa-phone {
-    color: $textColor;
-}
-
-.mail_phone,
-.mail-show,
-.phone-show {
-    display: none;
-}
-
-.order-date {
-    background-color: green;
-    color: white;
-}
-
-.order-date-small {
-    display: none;
-
-    background-color: green;
-    color: white;
-}
-
-.order-price {
-    font-size: 18px;
-}
+// Media querries
 
 @media screen and (max-width: 1399px) {
 
