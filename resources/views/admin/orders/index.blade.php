@@ -6,7 +6,7 @@
 
         <h1 class="py-2 mb-3">Ordini del tuo ristorante</h1>
 
-        <table class="table table-responsive table-borderless">
+        <table id="orders-table" class="table table-responsive table-borderless">
 
             {{-- Intestazione Tabella --}}
             <thead class="order-int">
@@ -16,7 +16,7 @@
                     <th scope="col">Recapiti</th>
                     <th scope="col">Indirizzo</th>
                     <th scope="col" class="text-center">In data</th>
-                    <th scope="col" class="text-center">Tot.</th>
+                    <th scope="col" class="text-center">Tot. €</th>
                     <th scope="col" class="text-center">Riepilogo</th>
 
                 </tr>
@@ -95,7 +95,7 @@
 
                     <th class="orders-data align-middle text-center" scope="row">
                         <span class="order-price fw-normal">
-                            {{ $order->total_price }} €
+                            {{ $order->total_price }}€
                         </span>
                     </th>
 
@@ -111,25 +111,29 @@
                 <!-- Modale nascosto -->
                 <div id="orderDetailsModal-{{ $order->id }}" class="order_modal">
                     <div class="summary-content">
-                        <span class="close-order">
-                            <i class="fa-solid fa-x"></i>
-                        </span>
-                        <div class="riepilogo d-flex flex-column justify-content-between align-items-start gap-4">
+                        <div class="riepilogo d-flex flex-column align-items-cennter gap-1 mt-5">
+                            <span class="close-order">
+                                <i class="fa-solid fa-x"></i>
+                            </span>
                             @foreach($order->dishes as $dish)
-                            <div>
+                            <div class="position-relative d-flex gap-3 align-items-center w-100">
                                 @if ($dish->dish_image)
                                 @if (Str::startsWith($dish->dish_image, ['http://', 'https://']))
-                                    <img src="{{ $dish->dish_image }}" alt="{{ $dish->dish_name }}">
+                                    <img class="img-dish" src="{{ $dish->dish_image }}" alt="{{ $dish->dish_name }}">
                                 @else
-                                    <img src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->dish_name }}" alt="Placeholder">
+                                    <img class="img-dish" src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->dish_name }}">
                                 @endif
                                 @else
-                                    <img src="{{ Vite::asset('resources/img/Default_different_food_0.jpg') }}" alt="Placeholder">
+                                    <img class="img-dish" src="{{ Vite::asset('resources/img/Default_different_food_0.jpg') }}" alt="{{ $dish->dish_name }}">
                                 @endif
-
-                                <span id="order-details">{{ $dish->pivot->quantity }} x {{ $dish->dish_name }} = {{ $dish->pivot->price }}€</span>
-                                
+                                <div class="order-details d-flex flex-column justify-content-center align-items-start">
+                                    <div class="name-dish"> {{ $dish->dish_name }} x {{ $dish->pivot->quantity }} </div>
+                                    <span class="single-price fw-bold">{{ $dish->pivot->price }} €</span>
+                                    <div class="ingredients-dish text-start"> {{ $dish->ingredients }} </div>
+                                </div>  
                             </div>
+
+                            <hr>
                             
                             @endforeach
                         </div>
