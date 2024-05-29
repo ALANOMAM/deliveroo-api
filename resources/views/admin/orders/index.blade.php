@@ -6,17 +6,17 @@
 
         <h1 class="py-2 mb-3">Ordini del tuo ristorante</h1>
 
-        <table class="table">
+        <table class="table table-responsive table-borderless">
 
             {{-- Intestazione Tabella --}}
             <thead class="bg-transparent">
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Cognome</th>
-                    <th scope="col">Indirizzo consegna</th>
+
+                    <th scope="col">Cliente</th>
                     <th scope="col">Recapiti</th>
-                    <th scope="col" class="text-center">Data Ordine</th>
-                    <th scope="col" class="text-center">Totale ordine</th>
+                    <th scope="col">Indirizzo</th>
+                    <th scope="col" class="text-center">In data</th>
+                    <th scope="col" class="text-center">Tot.</th>
                     <th scope="col" class="text-center">Riepilogo</th>
 
                 </tr>
@@ -28,43 +28,50 @@
                 @foreach ($orders as $order)
 
 
-                <tr class="orders-shadow">
+                <tr class="orders-shadow"> 
 
                     {{-- Nome Cognome utente --}}
 
-                    <th class="align-middle" scope="row">
-                        <div class="fw-bold">
-                            {{ $order->customer_name }}
-                        </div>
-                    </th>
-
-                    <th class="align-middle" scope="row">
-                        <div class="fw-bold">
-                            {{ $order->customer_surname }}
-                        </div>
-                    </th>
-
-
-                    {{-- Indirizzo consegna --}}
-                    <th class="align-middle" scope="row">
+                    <th class="orders-data align-middle" scope="row">
                         <div class="fw-normal">
-                            {{ $order->customer_address }}
+                            {{ $order->customer_name }} {{ $order->customer_surname }}
                         </div>
                     </th>
 
                     {{-- Recapiti utente --}}
 
                     <th class="orders-data align-middle" scope="row">
-                    
-                        <div class="fw-normal">
+
+                        <div class="mail_phone">
+                            <i class="fa-solid fa-phone">
+                                <div class="phone-show">
+                                    {{ $order->customer_phone }}
+                                </div>
+                            </i>
+                            <i class="fa-solid fa-envelope">
+                                <div class="mail-show">
+                                    {{ $order->customer_email }}
+                                </div>
+                            </i>
+                        </div>
+
+                        <div class="hidden fw-normal">
                             <i class="fa-solid fa-envelope"></i>
                             {{ $order->customer_email }}
                         </div>
-                        <div class="fw-normal">
+                        <div class="hidden fw-normal">
                             <i class="fa-solid fa-phone"></i>
                             {{ $order->customer_phone }}
                         </div>
                         
+                    </th>
+
+
+                    {{-- Indirizzo consegna --}}
+                    <th class="orders-data align-middle" scope="row">
+                        <div class="fw-normal">
+                            {{ $order->customer_address }}
+                        </div>
                     </th>
 
                     {{-- data ordine --}}
@@ -78,21 +85,21 @@
                                 $formatted_date = strftime('%d %b %Y', $timestamp);
                                 $formatted_time = date('H:i', $timestamp);
                             ?>
-                            <span class="order-date bg-success text-white px-2 py-1 rounded mb-1"><?php echo $formatted_date . ' ' . $formatted_time; ?></span>
+                            <span class="order-date bg-success text-center text-white px-2 py-1 rounded mb-1"><?php echo $formatted_date . ' ' . $formatted_time; ?></span>
                         </div>
                     </th>
                     
                     {{-- Prezzo totale ordine --}}
 
                     <th class="orders-data align-middle text-center" scope="row">
-                        <span class="fw-normal fs-5 ">
+                        <span class="order-price fw-normal fs-6">
                             {{ $order->total_price }} €
                         </span>
                     </th>
 
                     {{-- Riepilogo ordine --}}
                     
-                    <th class="orders-price align-middle text-center" scope="row">
+                    <th class="align-middle text-center" scope="row">
                         <i id="eye-icon-{{ $order->id }}" class="fa-solid fa-eye eye-icon"></i>
                     </th>
 

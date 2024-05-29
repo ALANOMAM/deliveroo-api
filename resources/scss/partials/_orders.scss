@@ -49,3 +49,105 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.fa-envelope,
+.fa-phone {
+    color: $textColor;
+}
+
+.mail_phone,
+.mail-show,
+.phone-show {
+    display: none;
+}
+
+
+@media screen and (max-width: 1399px) {
+
+    .orders-data {
+        font-size: 14px;
+    }
+
+    .order-date {
+        font-size: 14px;
+    }
+
+    .order-price {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 1199px) {
+
+    .mail_phone {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+
+    }
+
+    .fa-envelope {
+        color: $secondaryColor;
+        position: relative;
+        font-size: 20px;
+
+
+        &:hover {
+
+            .mail-show {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                position: absolute;
+                bottom: -20px;
+                left: 0px;
+
+                width: 250px;
+                height: 20px;
+
+                font-size: 12px;
+
+                background-color: $secondaryColor;
+                color: white;
+                
+            }
+        }
+    }
+
+    .fa-phone {
+        color: $secondaryColor;
+        position: relative;
+        font-size: 20px;
+
+        &:hover {
+
+            .phone-show {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                position: absolute;
+                bottom: -25px;
+                left: 0px;
+
+                width: 150px;
+                height: 25px;
+
+                font-size: 12px;
+
+                background-color: $secondaryColor ;
+                color: white;
+
+            }
+
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+
+}
