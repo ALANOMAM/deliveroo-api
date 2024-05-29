@@ -79,6 +79,7 @@
           //dato nell'asse delle y 
         //data: [65, 59, 80, 81, 56, 55, 40, 100],
         data: data.map(row => row.cash_in),
+        backgroundColor: 'rgba(246, 89, 0, 0.7)',  // Colore delle barre
 
           //riempie o no la parte sotto la linea del grafico
           fill: true,
@@ -151,6 +152,8 @@
         //dato nell'asse delle y 
       //data: [65, 59, 80, 81, 56, 55, 40, 100],
       data: data2.map(row => row.orders_number),
+
+      backgroundColor: 'rgba(70, 66, 85, 0.7)',  // Colore delle barre
 
         //riempie o no la parte sotto la linea del grafico
         fill: true,
