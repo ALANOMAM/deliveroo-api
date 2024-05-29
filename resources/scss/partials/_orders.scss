@@ -1,6 +1,6 @@
 @use '../partials/variables' as *;
 
-/* Stile del modale */
+/* Stile del modale riepilogo ordini */
 .order_modal {
 
     display: none;
@@ -21,6 +21,7 @@
 }
 
 /* Contenitore del modale */
+
 .summary-content {
     display: flex;
     flex-direction: column;
@@ -34,7 +35,7 @@
     width: 90px;
 }
 
-/* Pulsante di chiusura */
+/* Pulsante di chiusura modale */
 .close-order {
     color: #aaa;
     position: absolute;
@@ -50,6 +51,7 @@
     cursor: pointer;
 }
 
+
 .fa-envelope,
 .fa-phone {
     color: $textColor;
@@ -61,6 +63,21 @@
     display: none;
 }
 
+.order-date {
+    background-color: green;
+    color: white;
+}
+
+.order-date-small {
+    display: none;
+
+    background-color: green;
+    color: white;
+}
+
+.order-price {
+    font-size: 18px;
+}
 
 @media screen and (max-width: 1399px) {
 
@@ -151,3 +168,81 @@
 
 
 }
+
+@media screen and (max-width: 999px) {
+
+    .order-int {
+
+        th {
+            font-size: 12px;
+        }
+    }
+
+    .orders-data {
+        font-size: 12px;
+    }
+
+    .order-date {
+        font-size: 12px;
+    }
+
+    .order-price {
+        font-size: 12px;
+    }
+
+    .order-date {
+        display: none;
+    }
+
+    .order-date-small {
+        display: inline;
+    }
+
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+    .fa-envelope,
+    .fa-phone {
+        font-size: 16px;
+    }
+
+    .button-summary {
+
+        .fa-eye {
+            font-size: 16px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .fa-envelope,
+    .fa-phone {
+        font-size: 14px;
+    }
+
+    .button-summary {
+
+        .fa-eye {
+            font-size: 14px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+
+    .hidden-user {
+        display: none;
+    }
+
+}
+
+
+
+
+

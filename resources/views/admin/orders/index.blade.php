@@ -2,17 +2,17 @@
 
 @section('content')
 
-    <div class="container col-9 py-5 position-relative">
+    <div class="container py-5 position-relative">
 
         <h1 class="py-2 mb-3">Ordini del tuo ristorante</h1>
 
         <table class="table table-responsive table-borderless">
 
             {{-- Intestazione Tabella --}}
-            <thead class="bg-transparent">
+            <thead class="order-int">
                 <tr>
 
-                    <th scope="col">Cliente</th>
+                    <th scope="col" class="hidden-user">Cliente</th>
                     <th scope="col">Recapiti</th>
                     <th scope="col">Indirizzo</th>
                     <th scope="col" class="text-center">In data</th>
@@ -32,7 +32,7 @@
 
                     {{-- Nome Cognome utente --}}
 
-                    <th class="orders-data align-middle" scope="row">
+                    <th class="orders-data align-middle hidden-user" scope="row">
                         <div class="fw-normal">
                             {{ $order->customer_name }} {{ $order->customer_surname }}
                         </div>
@@ -85,21 +85,23 @@
                                 $formatted_date = strftime('%d %b %Y', $timestamp);
                                 $formatted_time = date('H:i', $timestamp);
                             ?>
-                            <span class="order-date bg-success text-center text-white px-2 py-1 rounded mb-1"><?php echo $formatted_date . ' ' . $formatted_time; ?></span>
+                            <span class="order-date text-center px-2 py-1 rounded mb-1"><?php echo $formatted_date . ' ' . $formatted_time; ?></span>
+
+                            <span class="order-date-small text-center px-2 py-1 rounded mb-1"><?php echo $formatted_date ?></span>
                         </div>
                     </th>
                     
                     {{-- Prezzo totale ordine --}}
 
                     <th class="orders-data align-middle text-center" scope="row">
-                        <span class="order-price fw-normal fs-6">
+                        <span class="order-price fw-normal">
                             {{ $order->total_price }} €
                         </span>
                     </th>
 
                     {{-- Riepilogo ordine --}}
                     
-                    <th class="align-middle text-center" scope="row">
+                    <th class="button-summary align-middle text-center" scope="row">
                         <i id="eye-icon-{{ $order->id }}" class="fa-solid fa-eye eye-icon"></i>
                     </th>
 
