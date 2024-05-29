@@ -5,72 +5,62 @@
 <div class="container py-5">
     <h1 class="mb-5">Lista dei piatti</h1>
 
-    <div class="d-flex justify-content-between align-items-start gap-3 ">
+    <div class="d-flex justify-content-between align-items-start gap-3">
 
-        <div class="dish-container col-9">
+        <div class="dish-container col-12 col-md-9 col-lg-9">
 
-            <table class="table">
-
-                {{-- Intestazione Piatti  
-                    messo in display none per ora--}}
-                <thead class="bg-transparent d-none">
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Prezzo</th>
-                        <th scope="col">Ingredienti</th>
-                        <th class="text-center" scope="col">Modifica/Cancella</th>
-                    </tr>
-                </thead> 
-                
-
-
+            <table class="table table-responsive table-borderless">
+            
                 {{-- Inizio t-body tabella Piatti --}}
-
                 <tbody>
                     @foreach ($dishes as $dish)
-
-
                     <tr class="shadow">
 
                         {{-- Immagine Piatto --}}
-                        <th class="img-dish-row d-flex align-items-center gap-3 " scope="row">
-                            <div class="image rounded-4">
-                                @if ($dish->dish_image)
-                                @if (Str::startsWith($dish->dish_image, ['http://', 'https://']))
-                                <img src="{{ $dish->dish_image }}" alt="{{ $dish->dish_name }}" width="100">
-                                @else
-                                <img src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->dish_name }}" width="100">
-                                @endif
-                                @else
-                                <img src="{{ Vite::asset('resources/img/Default_different_food_0.jpg') }}" alt="Placeholder" width="100">
-                                @endif
+                        <th class="img-dish-row align-middle h-100" scope="row">
+
+                            <div class="d-flex gap-2 align-items-center">
+
+                                <div class="image rounded-4">
+                                    @if ($dish->dish_image)
+                                    @if (Str::startsWith($dish->dish_image, ['http://', 'https://']))
+                                    <img src="{{ $dish->dish_image }}" alt="{{ $dish->dish_name }}" width="100">
+                                    @else
+                                    <img src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->dish_name }}" width="100">
+                                    @endif
+                                    @else
+                                    <img src="{{ Vite::asset('resources/img/Default_different_food_0.jpg') }}" alt="Placeholder" width="100">
+                                    @endif
+                                </div>
+
+                                <div>
+                                    @if ($dish->visible)
+                                    <i class="fa-sharp fa-solid fa-eye-slash"></i>
+                                    @else
+                                    <i class="fa-solid fa-eye"></i>
+                                    @endif
+                                </div>
+
                             </div>
-                            <div>
-                                @if ($dish->visible)
-                                <i class="fa-sharp fa-solid fa-eye-slash"></i>
-                                @else
-                                <i class="fa-solid fa-eye"></i>
-                                @endif
-                            </div>
+
                         </th>
 
                         {{-- Nome piatto --}}
-                        <th class="title-dish-row" scope="row">
+                        <th class="title-dish-row align-middle" scope="row">
                             <div class="fw-bold">
                                 {{ $dish->dish_name }}
                             </div>
                         </th>
 
                         {{-- prezzo piatto --}}
-                        <th class="title-dish-row" scope="row">
+                        <th class="title-dish-row align-middle" scope="row">
                             <div class="fw-normal">
                                 {{ $dish->dish_price }} €
                             </div>
                         </th>
 
                         {{-- Ingredienti piatto --}}
-                        <th class="ingedients-dish-row" scope="row">
+                        <th class="ingedients-dish-row align-middle" scope="row">
                             @if ($dish->ingredients)
                             <div class="fw-normal">
                                 {{$dish->ingredients}}
@@ -83,7 +73,8 @@
                         </th>
 
                         {{-- Pulsanti --}}
-                        <th class="modify-dish-row" scope="row">
+                        <th class="modify-dish-row align-middle" scope="row">
+                            
                             <div class="d-flex align-items-center justify-content-center p-2 gap-2">
                                 <span class="d-flex justify-content-between align-items-center">
                                     <a class="text-decoration-none" href="{{route('admin.dishes.edit', $dish->id)}}">
@@ -138,8 +129,8 @@
         </div>
 
 
-        <div class="bg-light mb-3 d-flex justify-content-end rounded-4 col-3 shadow">
-            <span class="d-flex justify-content-between align-items-center gap-3 py-3">
+        <div class="bg-light mb-3 d-flex justify-content-end rounded-4 col-6 col-md-3 col-lg-3 shadow order-1 order-lg-0">
+            <span class="d-flex justify-content-between align-items-center gap-2 py-3">
                 <h4>Aggiungi un piatto</h4>
                 <a class="text-decoration-none" href="{{route('admin.dishes.create')}}">
                     <div class="button me-2 d-flex justify-content-center align-items-center">
