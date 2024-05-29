@@ -6,17 +6,17 @@
 
   <div class="container col-9 py-5">
 
-    <div class="row"> 
+    <h1 class="py-2 mb-4">Statistiche del tuo ristorante</h1>
 
-      <h1 class="py-2 mb-3">Statistiche del tuo ristorante</h1>
+    <div class="row">
 
-        <div class="col-12 mb-5">
-          <h2>Ammontare delle vendite in € per mese</h2>
+        <div class="col-12 mb-5 m-auto">
+          <h2 class="fs-4 text-center">Ammontare delle vendite in € per mese</h2>
           <canvas id="myChart"></canvas>
         </div>
 
-        <div class="col-12">
-          <h2>Ammontare degli ordini per mese</h2>
+        <div class="col-12 m-auto">
+          <h2 class="fs-4 text-center">Ammontare degli ordini per mese</h2>
           <canvas id="myChart-two"></canvas>
         </div>
   
@@ -83,6 +83,7 @@
 
           //riempie o no la parte sotto la linea del grafico
           fill: true,
+          // Aggiunta MARIO per colore di background
           borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
           }]
@@ -90,7 +91,13 @@
         options: {
           scales: {
             y: {
-              beginAtZero: true
+              beginAtZero: true,
+              // Aggiunta MARIO per simbolo Euro asse y
+              ticks: {
+                callback: function(value, index, values) {
+                  return value + ' €';
+                }
+              }
             }
           }
         }
@@ -152,8 +159,9 @@
         //dato nell'asse delle y 
       //data: [65, 59, 80, 81, 56, 55, 40, 100],
       data: data2.map(row => row.orders_number),
-
-      backgroundColor: 'rgba(70, 66, 85, 0.7)',  // Colore delle barre
+      
+      // Aggiunta MARIO per colore di background
+      backgroundColor: 'rgba(70, 66, 85, 0.7)', 
 
         //riempie o no la parte sotto la linea del grafico
         fill: true,
