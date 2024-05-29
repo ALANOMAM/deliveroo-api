@@ -5,9 +5,9 @@
 <div class="container py-5">
     <h1 class="mb-5">Lista dei piatti</h1>
 
-    <div class="d-flex justify-content-between align-items-start gap-3">
+    <div class="dish-cont d-flex justify-content-between align-items-start gap-3">
 
-        <div class="dish-container col-12 col-md-9 col-lg-9">
+        <div class="dishes col-12 col-sm-12 col-md-8 col-lg-8 col-xl-9">
 
             <table class="table table-responsive table-borderless">
             
@@ -53,7 +53,7 @@
                         </th>
 
                         {{-- prezzo piatto --}}
-                        <th class="title-dish-row align-middle" scope="row">
+                        <th class="price-dish-row align-middle" scope="row">
                             <div class="fw-normal">
                                 {{ $dish->dish_price }} €
                             </div>
@@ -74,7 +74,7 @@
 
                         {{-- Pulsanti --}}
                         <th class="modify-dish-row align-middle" scope="row">
-                            
+
                             <div class="d-flex align-items-center justify-content-center p-2 gap-2">
                                 <span class="d-flex justify-content-between align-items-center">
                                     <a class="text-decoration-none" href="{{route('admin.dishes.edit', $dish->id)}}">
@@ -107,7 +107,7 @@
                                                         @csrf
                                                         @method("DELETE")
 
-                                                        <button class="btn btn-danger">Elimina</button>
+                                                        <button class="btn btn-orange">Elimina</button>
                                                     </form>
 
                                                 </div>
@@ -129,11 +129,11 @@
         </div>
 
 
-        <div class="bg-light mb-3 d-flex justify-content-end rounded-4 col-6 col-md-3 col-lg-3 shadow order-1 order-lg-0">
+        <div class="add-dish bg-light mb-3 d-flex justify-content-end rounded-4 shadow col-9 col-sm-8 col-md-4 col-lg-4 col-xl-3">
             <span class="d-flex justify-content-between align-items-center gap-2 py-3">
                 <h4>Aggiungi un piatto</h4>
                 <a class="text-decoration-none" href="{{route('admin.dishes.create')}}">
-                    <div class="button me-2 d-flex justify-content-center align-items-center">
+                    <div class="button-add me-2 d-flex justify-content-center align-items-center">
                         <i class="fa-solid fa-plus fs-1"></i>
                     </div>
                 </a>
