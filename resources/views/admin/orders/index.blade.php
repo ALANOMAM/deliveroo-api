@@ -82,8 +82,13 @@
                                 setlocale(LC_TIME, 'it_IT.UTF-8'); // Imposta la lingua italiana
                                 $created_at = $order->created_at;
                                 $timestamp = strtotime($created_at);
-                                $formatted_date = strftime('%d %b %Y', $timestamp);
-                                $formatted_time = date('H:i', $timestamp);
+                                
+                                // Aggiungo due ore al timestamp
+                                $timestamp_plus_two_hours = $timestamp + 2 * 3600;
+
+                                // Formatta la data e l'ora con il nuovo timestamp
+                                $formatted_date = strftime('%d %b %Y', $timestamp_plus_two_hours);
+                                $formatted_time = date('H:i', $timestamp_plus_two_hours);
                             ?>
                             <span class="order-date text-center px-2 py-1 rounded mb-1"><?php echo $formatted_date . ' ' . $formatted_time; ?></span>
 
