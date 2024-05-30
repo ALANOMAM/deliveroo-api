@@ -34,5 +34,5 @@ function generateDishOrderAssociations($numOrders, $numRestaurants) {
     return $associations;
 }
 
-return generateDishOrderAssociations(154, 12);
+return generateDishOrderAssociations(300, 12);
 ?>
