@@ -72,6 +72,10 @@
                             @endif
                         </th>
 
+                        @php
+                            $modalId = "modalDeleteDish" . $dish->id;
+                        @endphp
+
                         {{-- Pulsanti --}}
                         <th class="modify-dish-row align-middle" scope="row">
 
@@ -84,34 +88,30 @@
                                     </a>
                                 </span>
                                 <div>
-                                    <button type="button" class="delete border-0" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash fs-2"></i></button>
+                                    <button type="button" class="delete border-0" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}"><i class="fa-solid fa-trash fs-2"></i></button>
 
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="{{ $modalId }}" tabindex="-1" aria-labelledby="exampleModalLabel{{ $dish->id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered ">
                                             <div class="modal-content">
-
+                                    
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Piatto</h1>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel{{ $dish->id }}">Elimina Piatto</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-
+                                    
                                                 <div class="modal-body">
-                                                    Sei sicuro che vuoi eliminare il piatto "{{$dish->dish_name}}" ?
+                                                    Sei sicuro che vuoi eliminare il piatto "{{ $dish->dish_name }}" ?
                                                 </div>
-
-
+                                    
                                                 <div class="modal-footer">
-
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
                                                     <form action="{{route('admin.dishes.destroy', $dish) }}" method="POST">
                                                         @csrf
                                                         @method("DELETE")
-
                                                         <button class="btn btn-orange">Elimina</button>
                                                     </form>
-
                                                 </div>
-
+                                    
                                             </div>
                                         </div>
                                     </div>
