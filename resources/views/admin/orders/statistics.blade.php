@@ -52,17 +52,21 @@
     //il mio array che conterrà le componenti x e y del mio grafico          
     const data = [];
     //salvo i possibili mesi dell'anno
-    const month_names = ["","January","February","March","April","May","June","July","August","September","October","November","December"];
+    const month_names = ["", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
 
 
     //pusho le componenti x e y del mio grafico dentro l'array
     for(let i=0; i<orders_in_js_decoded.length; i++){
-    //associo al numero del mese estratto  un nome del mese preso dall'array sopra
-    let month_name = month_names[orders_in_js_decoded[i].month_number]
-  
-    data.push({ month:month_name , cash_in:orders_in_js_decoded[i].money_per_month });
-        }
-    console.log(data); 
+
+      // associazione del mese in italiano e aggiunta dell'anno
+      let month_name = month_names[orders_in_js_decoded[i].month_number];
+      // Aggiunta dell'anno
+      let year = orders_in_js_decoded[i].year; 
+
+      // Combinazione del mese e dell'anno
+      data.push({ month: month_name + ' ' + year, cash_in: orders_in_js_decoded[i].money_per_month }); 
+    }
+    
 
             
     new Chart(ctx, {
@@ -133,17 +137,21 @@
     //il mio array che conterrà le componenti x e y del mio grafico          
     const data2 = [];
     //salvo i possibili mesi dell'anno
-    const month_names2 = [ "","January","February","March","April","May","June","July","August","September","October","November","December"];
+    const month_names2 = ["", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
 
 
     //pusho le componenti x e y del mio grafico dentro l'array
     for(let i=0; i<orders_in_js_decoded2.length; i++){
-    //associo al numero del mese estratto  un nome del mese preso dall'array sopra
-    let month_name = month_names2[orders_in_js_decoded2[i].month_number]
-  
-    data2.push({ month:month_name , orders_number:orders_in_js_decoded2[i].orders_per_month });
-        }
-    console.log(data2); 
+
+      // associazione del mese in italiano e aggiunta dell'anno
+      let month_name = month_names2[orders_in_js_decoded2[i].month_number];
+      // Aggiunta dell'anno
+      let year = orders_in_js_decoded2[i].year; 
+
+       // Combinazione del mese e dell'anno
+      data2.push({ month: month_name + ' ' + year, orders_number: orders_in_js_decoded2[i].orders_per_month });
+    }
+    
 
             
   new Chart(ctx2, {
