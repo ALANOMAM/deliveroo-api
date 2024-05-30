@@ -6,7 +6,7 @@
 
         <h1 class="py-2 mb-3">Ordini del tuo ristorante</h1>
 
-        <table id="orders-table" class="table table-responsive table-borderless">
+        <table id="orders-table" class="table table-responsive table-borderless table-striped">
 
             {{-- Intestazione Tabella --}}
             <thead class="order-int">
@@ -28,7 +28,7 @@
                 @foreach ($orders as $order)
 
 
-                <tr class="orders-shadow"> 
+                <tr class="orders-shadow" class="table table-responsive table-borderless orders-table-striped"> 
 
                     {{-- Nome Cognome utente --}}
 
