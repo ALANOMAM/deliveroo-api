@@ -86,7 +86,7 @@
                                 // Aggiungo due ore al timestamp
                                 $timestamp_plus_two_hours = $timestamp + 2 * 3600;
 
-                                // Formatta la data e l'ora con il nuovo timestamp
+                                // Formattazione data e ora con il nuovo timestamp
                                 $formatted_date = strftime('%d %b %Y', $timestamp_plus_two_hours);
                                 $formatted_time = date('H:i', $timestamp_plus_two_hours);
                             ?>

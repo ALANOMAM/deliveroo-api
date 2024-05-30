@@ -55,7 +55,7 @@
                         {{-- prezzo piatto --}}
                         <th class="price-dish-row align-middle" scope="row">
                             <div class="fw-normal">
-                                {{ $dish->dish_price }} €
+                                {{ $dish->dish_price }}€
                             </div>
                         </th>
 
