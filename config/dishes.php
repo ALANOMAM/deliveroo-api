@@ -175,7 +175,7 @@ return [
                 'ingredients' => 'Tagliatelle fresche, tartufo nero pregiato, panna fresca, burro, parmigiano reggiano',
                 'dish_price' => 25,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://www.italianmenumaster.com/images/94.jpg',
         ],
         [
                 'restaurant_id' => 5,
@@ -280,7 +280,7 @@ return [
                 'ingredients' => 'Gamberi, sale, pepe, farina di mais, aglio, peperoncino',
                 'dish_price' => 18,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://www.ricettasprint.it/wp-content/uploads/2021/06/Gamberi-al-pepe-nella-friggitrice-ad-aria.jpg',
         ],
         [
                 'restaurant_id' => 8,
@@ -328,7 +328,7 @@ return [
                 'ingredients' => 'Riso, verdure miste, carne marinata, uovo, gochujang (salsa piccante coreana)',
                 'dish_price' => 15,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://www.simplyquinoa.com/wp-content/uploads/2022/04/quinoa-bibimbap-3-500x500.jpg',
         ],
         [
                 'restaurant_id' => 9,
@@ -336,7 +336,7 @@ return [
                 'ingredients' => 'Cavolo cinese fermentato, peperoncino rosso in polvere, aglio, zenzero, pesce essiccato (opzionale)',
                 'dish_price' => 10,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://www.chilipeppermadness.com/wp-content/uploads/2021/12/Kimchi-SQ-500x500.jpg',
         ],
         [
                 'restaurant_id' => 9,
@@ -344,7 +344,7 @@ return [
                 'ingredients' => 'Fettine di manzo marinato, salsa di soia, zucchero, aglio, sesamo',
                 'dish_price' => 18,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://images.immediate.co.uk/production/volatile/sites/2/2022/09/Bulgogi-a63fca6.jpg',
         ],
         [
                 'restaurant_id' => 9,
@@ -352,14 +352,14 @@ return [
                 'ingredients' => 'Pollo, salsa piccante, verdure miste, tteok (gnocchi di riso)',
                 'dish_price' => 20,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://theodehlicious.com/wp-content/uploads/2021/09/Cheese-Dakgalbi.jpg',
         ],
         [
                 'restaurant_id' => 9,
                 'dish_name' => 'Japchae',
                 'ingredients' => 'Verdure miste, frittura di patate dolci, funghi, manzo marinato, glassa di soia',
                 'dish_price' => 17,
-                'visible' => 0,
+                'visible' => true,
                 'dish_image' => null,
         ],
         [
@@ -448,15 +448,15 @@ return [
                 'ingredients' => 'Pesce crudo fresco (tonno, salmone, branzino, ecc.)',
                 'dish_price' => 18,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://primochef.it/wp-content/uploads/2021/11/SH_sashimi_di_salmone.jpg.webp',
         ],
         [
                 'restaurant_id' => 12,
                 'dish_name' => 'Nigiri Sushi',
                 'ingredients' => 'Riso, pesce crudo (tonno, salmone, gambero, ecc.)',
                 'dish_price' => 3,
-                'visible' => 0,
-                'dish_image' => null,
+                'visible' => true,
+                'dish_image' => 'https://alaskaseafood.it/wp-content/uploads/2021/11/nigiri-di-salmone-selvaggio-alaska.jpg',
         ],
         [
                 'restaurant_id' => 12,
@@ -464,15 +464,15 @@ return [
                 'ingredients' => 'Riso, alga nori, pesce o verdure (tonno, avocado, cetriolo, ecc.)',
                 'dish_price' => 9,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://alaskaseafood.it/wp-content/uploads/2021/11/nigiri-di-salmone-selvaggio-alaska.jpg',
         ],
         [
                 'restaurant_id' => 12,
                 'dish_name' => 'Tempura Maki',
                 'ingredients' => 'Riso, alga nori, tempura (gamberi o verdure)',
                 'dish_price' => 10,
-                'visible' => true,
-                'dish_image' => null,
+                'visible' => 0,
+                'dish_image' => 'https://www.ristoranteumi.it/wp-content/uploads/2020/08/Ristorante_UMI_359.jpg',
         ],
         [
                 'restaurant_id' => 12,
@@ -480,7 +480,7 @@ return [
                 'ingredients' => 'Riso, alga nori, avocado, surimi (crab stick), cetriolo',
                 'dish_price' => 11,
                 'visible' => 0,
-                'dish_image' => null,
+                'dish_image' => 'https://twodollareats.com/wp-content/uploads/2019/10/Two-Dollar-Eats-5265.jpg',
         ],
 
 

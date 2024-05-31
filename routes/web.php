@@ -64,6 +64,6 @@ Route::middleware(['auth', 'verified'])
         Route::get('/order-stats',[StatsController::class, 'OrderChart']);
 
         //StatsController route
-        Route::get('/order-stats2',[StatsController::class, 'OrderChart2']);
+        // Route::get('/order-stats2',[StatsController::class, 'OrderChart2']);
 
     });

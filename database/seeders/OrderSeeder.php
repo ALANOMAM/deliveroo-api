@@ -53,7 +53,7 @@ class OrderSeeder extends Seeder
             return $users;
         }
 
-        $orders = generateRandomUsers(154);
+        $orders = generateRandomUsers(300);
 
         // Order::withoutEvents(function () use ($orders) {
         //     foreach ($orders as $order) {

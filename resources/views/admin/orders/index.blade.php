@@ -6,7 +6,7 @@
 
         <h1 class="py-2 mb-3">Ordini del tuo ristorante</h1>
 
-        <table id="orders-table" class="table table-responsive table-borderless">
+        <table id="orders-table" class="table table-responsive table-borderless table-striped">
 
             {{-- Intestazione Tabella --}}
             <thead class="order-int">
@@ -28,7 +28,7 @@
                 @foreach ($orders as $order)
 
 
-                <tr class="orders-shadow"> 
+                <tr class="orders-shadow" class="table table-responsive table-borderless orders-table-striped"> 
 
                     {{-- Nome Cognome utente --}}
 
@@ -82,8 +82,13 @@
                                 setlocale(LC_TIME, 'it_IT.UTF-8'); // Imposta la lingua italiana
                                 $created_at = $order->created_at;
                                 $timestamp = strtotime($created_at);
-                                $formatted_date = strftime('%d %b %Y', $timestamp);
-                                $formatted_time = date('H:i', $timestamp);
+                                
+                                // Aggiungo due ore al timestamp
+                                $timestamp_plus_two_hours = $timestamp + 2 * 3600;
+
+                                // Formattazione data e ora con il nuovo timestamp
+                                $formatted_date = strftime('%d %b %Y', $timestamp_plus_two_hours);
+                                $formatted_time = date('H:i', $timestamp_plus_two_hours);
                             ?>
                             <span class="order-date text-center px-2 py-1 rounded mb-1"><?php echo $formatted_date . ' ' . $formatted_time; ?></span>
 
