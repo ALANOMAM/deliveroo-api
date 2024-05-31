@@ -3,7 +3,12 @@
 @section('content')
 
 <div class="container py-5">
-    <h1 class="mb-5">Lista dei piatti</h1>
+
+    <div class="mt-2 mb-4">
+        <a href="{{url('admin') }}" class="mb-3 return-button"><i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
+    </div>
+
+    <h1 class="mb-4">Lista dei piatti</h1>
 
     <div class="dish-cont d-flex justify-content-between align-items-start gap-3">
 

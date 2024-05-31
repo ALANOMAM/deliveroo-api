@@ -13,12 +13,34 @@ main {
     position: relative;
 }
 
+// Aggiunta wave sfondo body commentata
+
 // body {
 //     background-image: url('../img/wave-bg.png');
 //     background-size: cover;
 //     background-position: top; 
 //     background-repeat: no-repeat;
 // }
+
+.return-button {
+
+    margin-top: 10px;
+    padding: 12px 24px;
+
+    font-size: bold;
+
+    background-color: transparent;
+    color: rgba(254, 100, 66, 1);
+    
+    text-decoration: none;
+
+    &:hover {
+
+        color: rgba(254, 100, 66, 0.6);
+    }
+}
+
+
 
 .button-primary {
 

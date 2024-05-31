@@ -6,6 +6,10 @@
 
     <div class="row">
 
+        <div class="mt-2 mb-4">
+            <a href="{{route('admin.dishes.index')}}" class="mb-3 return-button"><i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
+        </div>
+
         <h1 class="mb-4">Modifica il piatto</h1>
 
         <div class="col-12 col-md-6 col-lg-7 py-4">
